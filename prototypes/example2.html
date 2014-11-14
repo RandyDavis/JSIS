@@ -22,18 +22,44 @@
       }
     }
 
+    // After definining the houses for each pig, now let's experiment back right here with some protoype properties of the House Object:
+
+      // Default Defense Weapon
+      House.prototype.defenseWeapon = "broom";
+
+      // Default Getaway Car
+      House.prototype.car = "Old VW Beetle";
+
+      // Default Alarm System
+      House.prototype.alarmSystem = "hardwired";
+
+      // Default Safe Room
+      House.prototype.safeRoom = false;
+
+      // Default Cooking Utensil
+      House.prototype.cooksWith = "small pot";
 
 
     // From here, make each pigs house as per the story using a prototype of the House() constructor
     // Pig 1
     var pigHouse1 = new House();
     pigHouse1.status();
+    console.log(pigHouse1.defenseWeapon);
+    console.log(pigHouse1.cooksWith);
     
 
     // Pig 2
     var pigHouse2 = new House();
     pigHouse2.material = "sticks";
+    pigHouse2.defenseWeapon = "Baseball Bat";
+    pigHouse2.cooksWith = "5QT Pot";
+    pigHouse2.car = "Old Pickup Truck";
     pigHouse2.status();
+    console.log(pigHouse2.defenseWeapon);
+    console.log(pigHouse2.cooksWith);
+    console.log(pigHouse2.car);
+    console.log(pigHouse2.alarmSystem);
+    console.log(pigHouse2.safeRoom);
 
 
     // Pig 3
@@ -42,8 +68,18 @@
     pigHouse3.windproof = true;
     pigHouse3.hasGlassWindows = true;
     pigHouse3.hasChimney = true;
+    pigHouse3.defenseWeapon = "50cal Rifle";
+    pigHouse3.car = "Ford Raptor";
+    pigHouse3.alarmSystem = "cellular";
+    pigHouse3.safeRoom = true;
+    pigHouse3.cooksWith = "Large Cauldron";
 
     pigHouse3.status();
+    console.log(pigHouse3.defenseWeapon);
+    console.log(pigHouse3.car);
+    console.log(pigHouse3.alarmSystem);
+    console.log(pigHouse3.safeRoom);
+    console.log(pigHouse3.cooksWith);
     
 
 
