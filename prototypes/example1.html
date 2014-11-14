@@ -27,42 +27,97 @@
 
     ////////////////////////// Prototype Property: Prototype-based Inheritance /////////////////////////
 
-    function Plant() {
-      this.country = "Mexico";
-      this.isOrganic = true;
-    }
+    // function Plant() {
+    //   this.country = "Mexico";
+    //   this.isOrganic = true;
+    // }
 
-    // Add the showNameAndColor method to the Plant prototype property
-    Plant.prototype.showNameAndColor = function() {
-      console.log("I am a " + this.name + " and my color is " + this.color);
-    }
+    // // Add the showNameAndColor method to the Plant prototype property
+    // Plant.prototype.showNameAndColor = function() {
+    //   console.log("I am a " + this.name + " and my color is " + this.color);
+    // }
 
-    // Add the amIOrganic method to the Plant prototype property
-    Plant.prototype.amIOrganic = function () {
-      if (this.isOrganic) {
-        console.log("I am organic, Baby!");
-      }
-    }
+    // // Add the amIOrganic method to the Plant prototype property
+    // Plant.prototype.amIOrganic = function () {
+    //   if (this.isOrganic) {
+    //     console.log("I am organic, Baby!");
+    //   }
+    // }
 
-    function Fruit(fruitName, fruitColor) {
-      this.name = fruitName;
-      this.color = fruitColor;
-    }
+    // function Fruit(fruitName, fruitColor) {
+    //   this.name = fruitName;
+    //   this.color = fruitColor;
+    // }
 
-    // Set the Fruit's prototype to Plant's constructor, thus inheriting all of Plant.prototype methods and properties.
-    Fruit.prototype = new Plant();
+    // // Set the Fruit's prototype to Plant's constructor, thus inheriting all of Plant.prototype methods and properties.
+    // Fruit.prototype = new Plant();
 
-    // Creates a new object, aBanana, with the Fruit constructor
-    var aBanana = new Fruit("Banana", "Yellow");
+    // // Creates a new object, aBanana, with the Fruit constructor
+    // var aBanana = new Fruit("Banana", "Yellow");
 
-    // Here, aBanana uses the name property from the aBanana object property, which is Fruit.prototype:
-    console.log(aBanana.name);  // Banana
+    // // Here, aBanana uses the name property from the aBanana object property, which is Fruit.prototype:
+    // console.log(aBanana.name);  // Banana
 
-    // Uses the showNameAndColor method from the Fruit object prototype, which is Plant.prototype.  The aBanana object inherits all the properties and methods from both the Plant and Fruit functions.
-    console.log(aBanana.showNameAndColor());  // I am a banana and my color is yellow.
+    // // Uses the showNameAndColor method from the Fruit object prototype, which is Plant.prototype.  The aBanana object inherits all the properties and methods from both the Plant and Fruit functions.
+    // console.log(aBanana.showNameAndColor());  // I am a banana and my color is yellow.
 
 
     //////////////////////// End Prototype Property: Prototype-based Inheritance /////////////////////////
+
+
+
+
+
+
+    ////////////////////////////// Prototype Attribute ///////////////////////////////////
+
+    // This example demos the prototype chain of an object's prototype object:
+    var myFriends = { name: "Pete" };
+
+    // To find the name property below, the search will begin directly on the myFriends object and will immediately find the name property because we defined the property name on the myFriend object.  This could be thought of as a prototype chain with one link.
+    console.log(myFriends.name);  // Pete
+
+    // In this example, the search for the toString() method will also begin on the myFriends' object, but because we never created a toString methond on the myFriends object, the compiler will then search for it on the myFriends prototype (the object which it inherited its properties from).
+
+    // And since all objects created with the object literal inherits from Object.prototype, the toString method will be found on Object.prototype -- see important note below ofr all properties inherited from Object.prototype.
+    myFriends.toString();
+
+    /*** An Important Note
+
+    Object.prototype Properties Inherited by all Objects
+    All objects in JavaScript inherit properties and methods from Object.prototype. These inherited properties and methods are constructor, hasOwnProperty (), isPrototypeOf (), propertyIsEnumerable (), toLocaleString (), toString (), and valueOf (). ECMAScript 5 also adds 4 accessor methods to Object.prototype.
+
+    ***/
+
+    // Here is another example of a prototype chain:
+    function People() {
+      this.superstar = "Michael Jackson";
+    }
+
+    // Define "athlete" property on the People prototype so that "athlete" is accessible by all objects that use the People() constructor.
+    People.prototype.athlete = "Tiger Woods";
+
+    var famousPerson = new People();
+    famousPerson.superstar = "Steve Jobs";
+
+    // The search for superstar will first look for the superstar property on the famousPerson object, and since we defined it there, that is the property that will be used.  Because we have overwritten the famousPerson's superstar property with one directly on the famousPerson object, the search will NOT proceed up the prototype chain.
+    console.log(famousPerson.superstar);
+    
+    // Note that in ECMAScript 5 you can set a property to read only, and in that case you cannot overwrite is as we just did.
+
+    // This will show the property from the famousPerson prototype(People.prototype), since the athlete prototype was not defined on the famousPerson object itself.
+    console.log(famousPerson.athlete);  // Tiger Woods
+
+    // In this example, the search proceeds up the prototype chain and find the toSTring method on Object.prototype, from which the Fruit object inherited -- all objects ultimately inherits from Object.prototype as we have noted before.
+    console.log(famousPerson.toString());  // [object Object]
+
+
+
+
+
+
+
+    ////////////////////////////// End Prototype Attribute ///////////////////////////////
 
 
 
