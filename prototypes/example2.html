@@ -6,10 +6,52 @@
 </head>
 <body>
 
+  <script>
+    // 3 Little Pigs Prototype exercise
+    function House() {
+      this.material = "straw";
+      this.windproof = false;
+      this.hasGlassWindows = false;
+      this.hasChimney = false;
+      this.status = function () {
+        console.log("My house is made of " + this.material + "; " +
+                    "Is windproof: " + this.windproof + "; " +
+                    "Has glass windows: " + this.hasGlassWindows + "; " +
+                    "Has a chimney: " + this.hasChimney + "; "
+                    );
+      }
+    }
+
+
+
+    // From here, make each pigs house as per the story using a prototype of the House() constructor
+    // Pig 1
+    var pigHouse1 = new House();
+    pigHouse1.status();
+    
+
+    // Pig 2
+    var pigHouse2 = new House();
+    pigHouse2.material = "sticks";
+    pigHouse2.status();
+
+
+    // Pig 3
+    var pigHouse3 = new House();
+    pigHouse3.material = "brick";
+    pigHouse3.windproof = true;
+    pigHouse3.hasGlassWindows = true;
+    pigHouse3.hasChimney = true;
+
+    pigHouse3.status();
+    
 
 
 
 
+
+
+  </script>
 
   <!-- Live Reload Script -->
   <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
