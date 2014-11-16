@@ -22,6 +22,11 @@
       }
     }
 
+    function Wolf() {
+      this.canBlowHouseDown = true;
+      this.color = "brown";
+    }
+
     // After definining the houses for each pig, now let's experiment back right here with some protoype properties of the House Object:
 
       // Default Defense Weapon
@@ -81,6 +86,11 @@
     console.log(pigHouse3.safeRoom);
     console.log(pigHouse3.cooksWith);
     
+
+    // Wolf
+    var wolf = new Wolf();
+    console.log(wolf.canBlowHouseDown);
+    console.log(wolf.color);
 
 
 
