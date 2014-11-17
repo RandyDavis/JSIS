@@ -25,6 +25,13 @@
     function Wolf() {
       this.canBlowHouseDown = true;
       this.color = "brown";
+      this.blowsHouseDown = function() {
+        if (this.material !== "brick") {
+          console.log("The wolf blew the house down!");
+        } else {
+          console.log("The house was too strong for the wolf to blow down.");
+        }
+      }
     }
 
     // After definining the houses for each pig, now let's experiment back right here with some protoype properties of the House Object:
@@ -91,11 +98,7 @@
     var wolf = new Wolf();
     console.log(wolf.canBlowHouseDown);
     console.log(wolf.color);
-
-
-
-
-
+    console.log(wolf.blowsHouseDown(pigHouse3));
 
   </script>
 
