@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Variable Scope and Hoisting Practice</title>
+</head>
+<body>
+  <script>
+    //////////////////////// Demo of Function-Level Scope ///////////////////////
+    // var name = "Richard";
+
+    // function showName() {
+    //   var name = "Jack"; // local variable; only accessible in this showName function
+    //   console.log(name); // Jack
+    // }  
+
+    // console.log(name); // Richard: the global variable
+
+    //////////////////////// End Demo of Function-Level Scope /////////////////////
+
+
+
+    //////////////////////// Demo of No Block-Level Scope ///////////////////////
+    // var name = "Richard";
+    // // the blocks in this if statement do not create a local context for the name variable
+    // if(name) {
+    //   name = "Jack"; // this name is the global name variable and it is being changed to "Jack" here
+    //   console.log(name); // Jack: still the global variable
+    // }
+
+    // // Here, the name variable is the same global name variable, but it was changed in the if statement 
+    // console.log(name); // Jack
+
+    //////////////////////// End Demo of No Block-Level Scope ///////////////////////
+
+
+    /////////////////// If You Don't Declare Your Local Variables ////////////////////
+    // If you don't declare your local variables with the var keyword, they are part of the global scope
+    // var name = "Michael Jackson";
+
+    // function showCelebrityName() {
+    //   console.log(name);
+    // }
+
+    // function showOrdinaryPersonName() {
+    //   name = "Johnny Evers";
+    //   console.log(name);
+    // }
+
+    // showCelebrityName(); // Michael Jackson
+
+    // // name is not a local variable, it simply changes the global name variable
+    // showOrdinaryPersonName(); // Johnny Evers
+
+    // // The global variable is now Johnny Evers, not the celebrity name anymore
+    // showCelebrityName();
+
+    // // The solution is to declare your local variable with the var keyword
+    // function showOrdinaryPersonName() {
+    //   var name = "Johnny Evers";  // Now name is always a local variable and it will not overwrite the global variable
+    //   console.log(name);
+    // }
+
+    ///////////////// End If You Don't Declare Your Local Variables //////////////////
+
+
+
+    //////////////////////// Local Variables Have Priority Over Global Variables in Functions ///////////////////////
+    // If you declare a global variable and a local variable with the same name, the local variable will have priority when you attempt to use the variable inside a function (local scope):
+    // var name = "Paul";
+
+    // function users () {
+    //   // Here, the name variable is local and it takes precedence over the same name variable in the global scope
+    //   var name = "Jack";
+
+    //   // The search for name starts right here inside the function before it attempts to lok outside the function in the global scope
+    //   console.log(name);
+    // }
+
+    // users (); // Jack
+
+    //////////////////////// End Local Variables Have Priority Over Global Variables in Functions ///////////////////////
+
+
+
+    //////////////////////// Global Variables ///////////////////////
+    // Any variable declared or initialized outside a function is a global variable, and it is therefore available to the entire application.  For exmaple:
+      // To declare a global variable, you could do the following:
+      // var myName = "Randy";
+
+      // // Or even
+      // firstName = "Randy";
+
+      // // Or
+      // var name;
+      // name;
+
+    // If a variable is initialized (assigned a value) without first being decalred with the var keyword, it is automatically added to the global context and it is thus a global variable:
+      // function showAge () {
+      //   // Age is a global variable because it was not yet declared with the var keyword inside this function
+      //   age = 90;
+      //   console.log(age); //
+      // } 
+
+      // showAge(); // 90
+
+      // // Age is in the global context, so it is available here too
+      // console.log(age);
+
+
+    // Demo of variables that are in the Global scope even as they seem otherwise
+      // Both firstName varaiables are in the global scope, even though the second one is surrounded by a block {}.
+      // var firstName = "Randy";
+      // {
+      //   var firstName = "Randy";
+      // }
+
+      // // To reiterate: JavaScript does not have block-level scope
+
+      // // The second declaration of firstName simply re-declares and overwrites the first one
+      // console.log(firstName);
+
+      // Another Example
+      // for (var i = 1; i <= 10; i++) {
+      //   console.log(i); // outputs 1, 2, 3, 4, 5, 6, 7, 8, 9, 10;
+      // };
+
+      // // The variable i is a global variable and it is accessible in the following function with the last value it was assigned above
+      // function aNumber() {
+      //   console.log(i);
+      // };
+
+      // aNumber(); // 11
+
+
+    // setTimeout Variables are Executed in the Global Scope
+      // Note that all functions in setTimeout are executed in the global scope.  This is a tricky bit; consider this:
+      // The user of the "this" object inside the setTimeout funciton refers to the WINDOW object, not to myObj
+      // var highValue = 200;
+      // var constantVal = 2;
+      // var myObj = {
+      //   highValue: 20,
+      //   constantVal: 5,
+      //   calculateIt: function () {
+      //     setTimeout (function() {
+      //       console.log(this.constantVal * this.highValue);
+      //     }, 2000);
+      //   }
+      // }
+
+      // // The "this" object in the setTimeout function used the global highValue and constantVal variables, because the reference to "this" in the setTimeout function refers to the global window object, not to the myObj object as we might expect.
+      // myObj.calculateIt(); // 400
+      // // This is an important point to remember.
+
+
+    // Do not Pollute the Global Scope
+      // It's important to avoid creating many variables in the global scope, such as this:
+        // These two variables are in the global scope and they shouldn't be here:
+        // var firstName, lastName;
+
+        // function fullName() {
+        //   console.log("Full Name: " + firstName + " " + lastName);
+        // }
+
+      // This is the improved code and the proper way to avoid polluting the global scope
+        // Declare the variables inside the function where they are local variables
+        function fullName() {
+          var firstName = "Michael", lastName = "Jackson";
+
+          console.log("Full Name: " + firstName + " " + lastName);
+        }
+
+        fullName();
+
+
+
+    //////////////////////// End Global Variables ///////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //////////////////////// Demo of Function-Level Scope ///////////////////////
+    //////////////////////// End Demo of Function-Level Scope ///////////////////////
+
+
+  </script>
+
+  <!-- Live Reload Script -->
+  <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+</body>
+</html>
