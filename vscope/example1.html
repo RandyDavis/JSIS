@@ -164,23 +164,79 @@
 
       // This is the improved code and the proper way to avoid polluting the global scope
         // Declare the variables inside the function where they are local variables
-        function fullName() {
-          var firstName = "Michael", lastName = "Jackson";
+        // function fullName() {
+        //   var firstName = "Michael", lastName = "Jackson";
 
-          console.log("Full Name: " + firstName + " " + lastName);
-        }
+        //   console.log("Full Name: " + firstName + " " + lastName);
+        // }
 
-        fullName();
-
-
+        // fullName();
 
     //////////////////////// End Global Variables ///////////////////////
 
 
 
 
+    //////////////////////// VARIABLE HOISTING EXAMPLE ///////////////////////
+    // All variable declarations are hoisted(lifted and declared) to the top of the function, if defined in a function, or the top of the global context, if outside a function.
+    // It's important to know that only variable declarations are hoisted to the top, not variable initialization or assignments (when the variable is assigned a value).
+
+      // function showName() {
+      //   console.log("First Name: " + name);
+      //   var name = "Randy";
+      //   console.log("Last Name: " + name);
+      // }
+
+      // showName();
+      // // First Name: undefined
+      // // Last Name: Randy
+
+    // The reason undefined prints first is because the local variable name was hoisted to the top of the function
+    // Which means it is this local variable that get calls the first time.
+    // This is how the code is actually processed by the JavaScript engine:
+
+      // function showName() {
+      //   var name; // name is hoisted (note that is undefined at this point, since the assignment happens below)
+      //   console.log("First Name: " + name); // First Name: undefined
+
+      //   name = "Randy";  // name is assigned a value
+
+      //   // now name is Randy
+      //   console.log("Last Name: " + name); // Last Name: Randy
+      // }
+
+    ////** Function Declaration Overrides Variable Declaration When Hoisted 
 
 
+
+
+
+    //////////////////////// End VARIABLE HOISTING EXAMPLE ///////////////////////
+    // Both function declaration and variable declarations are hoisted to the top of the containing scope. And function declaration takes precedence over variable declarations (but not over variable assignment). As is noted above, variable assignment is not hoisted, and neither is function assignment. As a reminder, this is a function assignment: var myFunction = function () {}.
+    // Here is a basic example to demonstrate:
+    var myName;
+    function myName() {
+      console.log("Randy");
+    }
+
+    // The function declaration overrides the variable name
+    console.log(typeof myName); // function
+
+    // But in this example, the variable assignment overrides the function declaration
+    var myName = "Randy"; // THis is the variable assignment (initialization) that overrides the function declaration.
+
+    function myName() {
+      console.log("Randy");
+    }
+
+    console.log(typeof myName); // string
+
+    //*** It is important to note that function expressions, such as the example below, are not hoisted:
+    var myName = function () {
+      console.log("Randy");
+    }
+
+    // In strict mode, an error will occur if you assign a variable a value without first declaring the variable.  Always declare your variables!!
 
 
 
