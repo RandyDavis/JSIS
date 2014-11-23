@@ -1,0 +1,1 @@
+// Create an array and assign it values.var colors;colors = ['red', 'white', 'blue'];// Show the first item from the array.var elColors = document.getElementById('colors');elColors.textContent = colors[2];// Note: textContent does not work in IE8 or earlier - see explanation on website
