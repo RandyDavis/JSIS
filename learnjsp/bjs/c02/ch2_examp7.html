@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ch2. Example 7</title>
+</head>
+<body>
+  
+  <script type="text/javascript">
+    var myString = "I'm a name not a number";
+    // var myString = "56.02 degrees centigrade";
+    var myInt;
+    var myFloat;
+
+    document.write("\"" + myString + "\" is " + parseInt(myString) + " as an integer" + "<br>");
+
+    myInt = parseInt(myString);
+    document.write("\"" + myString + "\" when converted to an integer equals " + myInt + "<br>");
+
+    myFloat = parseFloat(myString);
+    document.write("\"" + myString + "\" when converted to a floating point number equals " + myFloat);
+  </script>
+
+  <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+</body>
+</html>
