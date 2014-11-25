@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ch3 Ex.4</title>
+</head>
+<body>
+
+  <script>
+  // Modify the code of ex3 to request the times table to be displayed from the user; the code should continue to request and display times tables until the user enters -1.  Additionally, do a check to make sure that the user is entering a valid number; if the number is not valid, ask the user to re-enter it.
+
+  // ex2 code
+  // var numTable = 12;
+  // var timesBy;
+
+  // for (timesBy = 1; timesBy < 13; timesBy++) {
+  //   document.write(numTable + " * " + timesBy+ " = " + (numTable * timesBy) + "<br>");
+  // }
+
+  // ex3 code
+  // function writeTimesTable(timesTable, timesByStart, timesByEnd) {
+  //   for (; timesByStart <= timesByEnd; timesByStart++) {
+  //     document.write(timesTable + " * " + timesByStart + " = " + (timesByStart * timesTable) + "<br>");
+  //   }
+  // }
+
+  // writeTimesTable(4, 4, 9);
+
+
+  // ex4 code...I like my solution better!
+  function showTimesTable(timesTable) {
+    timesTable = prompt("Which times table would you like to see?","");
+    if (!isNaN(timesTable)) {
+      document.write("<br><strong>The " + timesTable + " times table" + "</strong><br>");
+    }
+    for (var timesBy = 1; timesBy <= 12; timesBy++) {
+      if (timesTable <= -1) {
+          document.write("Invalid entry");
+          break;
+        } else if (isNaN(timesTable)) {
+          document.write("Please enter a valid number!");
+          break;
+        }
+        document.write(timesTable + " * " + timesBy + " = " + (timesBy * timesTable) + "<br>");
+    }
+  }
+
+  showTimesTable();
+
+
+  // ex4 book solution
+  // function writeTimesTable(timesTable, timesByStart, timesByEnd) {
+  //   for (; timesByStart <= timesByEnd; timesByStart++) {
+  //     document.write(timesTable + " * " + timesByStart + " = " + (timesByStart * timesTable) + "<br>");
+  //   }
+  // }
+
+  // var timesTable;
+
+  // while ((timesTable = prompt("Enter the times table", -1)) != -1) {
+  //   while (isNaN(timesTable) == true) {
+  //     timeTable = prompt(timesTable + " is not a valid nubmer, please retry", -1);
+  //   }
+  //   if (timesTable == -1) {
+  //     break;
+  //   }
+
+  //   document.write("<br>The " + timesTable + " times table<br>");
+  //   writeTimesTable(timesTable, 1, 12);
+    
+  // }
+
+  </script>
+
+
+
+  <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+</body>
+</html>

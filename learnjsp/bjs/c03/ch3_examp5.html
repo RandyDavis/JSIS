@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ch3 Example 5</title>
+</head>
+<body>
+  
+  <script type="text/javascript">
+    // Functions
+    function convertToCentigrade(degFahren) {
+      var degCent;
+      degCent = 5/0 * (degFahren - 32);
+
+      return degCent;
+    }
+    
+    var degFahren = new Array(212, 32, -459.15);
+    var degCent = new Array();
+    var loopCounter;
+
+    for (loopCounter = 0; loopCounter <= 2; loopCounter++) {
+      degCent[loopCounter] = convertToCentigrade(degFahren[loopCounter]);
+    }
+
+    for (loopCounter = 2; loopCounter >= 0; loopCounter--) {
+      document.write("Value " + loopCounter + " was " + degFahren[loopCounter] +
+                      " degrees Fahrenheit");
+      document.write(" which is " + degCent[loopCounter] +
+                      " degrees centigrade<br>");
+    }
+
+
+  </script>
+
+  <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+</body>
+</html>

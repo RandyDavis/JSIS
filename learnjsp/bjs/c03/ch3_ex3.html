@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ch3 Ex.3</title>
+</head>
+<body>
+
+  <script>
+  // Using document.write(), write code that displays the results of the 12 times table.  Its output should be the result of the calculations. 12 * 1 = 12, etc. until 12 * 12 = 144
+  // Change ex2 code so that it's a function that takes as parameters the times table required and the values at which it should start and end.  For example, you might try the four times table displayed starting with 4 * 4 and ending at 4 * 9.
+
+  // ex2 code
+  // var numTable = 12;
+  // var timesBy;
+
+  // for (timesBy = 1; timesBy < 13; timesBy++) {
+  //   document.write(numTable + " * " + timesBy+ " = " + (numTable * timesBy) + "<br>");
+  // }
+
+  function writeTimesTable(timesTable, timesByStart, timesByEnd) {
+    for (; timesByStart <= timesByEnd; timesByStart++) {
+      document.write(timesTable + " * " + timesByStart + " = " + (timesByStart * timesTable) + "<br>");
+    }
+  }
+
+  writeTimesTable(4, 4, 9);
+  </script>
+
+
+
+  <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+</body>
+</html>
