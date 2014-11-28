@@ -28,25 +28,44 @@
 
 
   // ex4 code...I like my solution better!
-  function showTimesTable(timesTable) {
-    timesTable = prompt("Which times table would you like to see?","");
-    if (!isNaN(timesTable)) {
+  // function showTimesTable(timesTable) {
+  //   timesTable = prompt("Which times table would you like to see?","");
+  //   if (!isNaN(timesTable)) {
+  //     document.write("<br><strong>The " + timesTable + " times table" + "</strong><br>");
+  //   }
+  //   for (var timesBy = 1; timesBy <= 12; timesBy++) {
+  //     if (timesTable <= -1) {
+  //         document.write("Invalid entry");
+  //         break;
+  //       } else if (isNaN(timesTable)) {
+  //         document.write("Please enter a valid number!");
+  //         break;
+  //       }
+  //       document.write(timesTable + " * " + timesBy + " = " + (timesBy * timesTable) + "<br>");
+  //   }
+  // }
+
+  // showTimesTable();
+
+  // ex4 code 2nd go round  (just to hammer it down for fun)
+  function showTimesTable() {
+    timesTable = prompt("Enter a number to see it's times table:");
+    if(!isNaN(timesTable)) {
       document.write("<br><strong>The " + timesTable + " times table" + "</strong><br>");
     }
-    for (var timesBy = 1; timesBy <= 12; timesBy++) {
-      if (timesTable <= -1) {
-          document.write("Invalid entry");
-          break;
-        } else if (isNaN(timesTable)) {
-          document.write("Please enter a valid number!");
-          break;
-        }
-        document.write(timesTable + " * " + timesBy + " = " + (timesBy * timesTable) + "<br>");
-    }
+    for (var timesBy = 0; timesBy < 21; timesBy++) {
+      if(timesBy <= -1) {
+        document.write("Invalid Entry!");
+        break;
+      } else if (isNaN(timesTable)) {
+        document.write("Please enter a valid number!");
+        break;
+      }
+      document.write(timesTable + " * " + timesBy + " = " + (timesTable * timesBy) + "<br>");
+    } 
   }
 
   showTimesTable();
-
 
   // ex4 book solution
   // function writeTimesTable(timesTable, timesByStart, timesByEnd) {
