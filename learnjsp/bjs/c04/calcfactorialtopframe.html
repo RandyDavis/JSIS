@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ch4 Factorial Calculator Frameset Page</title>
+  <script>
+    function calcFactorial(factorialNumber) {
+      var factorialResult = 1;
+      for (; factorialNumber > 0; factorialNumber--) {
+        factorialResult = factorialResult * factorialNumber;
+      }
+      return factorialResult;
+    }
+  </script>
+</head>
+<body>
+  <frameset cols="100%, *">
+    <frame name="fraCalcFactorial" src="calcfactorial.html" />
+  </frameset>
+
+  <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+</body>
+</html>
