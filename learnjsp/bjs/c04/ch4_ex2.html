@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ch4 Exercise 2</title>
+</head>
+<body>
+  <script>
+    function checkForm(theForm) {
+      var formValid = true;
+      var elementCount = 0;
+      while (element =<= theForm.length) {
+        if (theForm.elements[elementcount].type == "text") {
+          if (theForm.elements[elementCount].value() = "")
+            alert("Please complete all form elements")
+          theForm.elements[elementCount].focus;
+          formValid = false;
+          break;
+        }
+      }
+      return formValid;
+    }
+  </script>
+  <form name="form1" onsubmit="return checkForm(document.form1)" action="">
+    <input type="text" id="text1" name="text1" >
+    <br>
+    CheckBox 1 <input type="checkbox" id="checkbox2" name="checkbox2">
+    <br>
+    CheckBox 1 <input type="checkbox" id="checkbox1" name="checkbox1">
+    <br>
+    <input type="text" id="text2" name="text2">
+    <p>
+      <input type="text" value="Submit" id="submit1" name="submit1">
+    </p>
+
+  </form>
+
+
+
+
+
+  <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+</body>
+</html>
