@@ -3,9 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <title>Debugging: CallStack</title>
+  <script>
+    function firstCall() {
+      secondCall();
+    }
+
+    function secondCall() {
+      thirdCall();
+    }
+
+    function thirdCall() {
+      //
+    }
+
+    function button1_onclick() {
+      debugger
+      firstCall();
+    }
+
+  </script>
 </head>
 <body>
-  
+  <input type="button" value="Button" name="button1" onclick="return button1_onclick()">
 
 
   <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
