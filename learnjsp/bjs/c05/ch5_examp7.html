@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ch5 Example 7</title>
+</head>
+<body>
+  <script>
+    var greeting;
+
+    var nowDate = new Date();
+    var nowHour = nowDate.getHours();
+    var nowMinute = nowDate.getMinutes();
+    var nowSecond = nowDate.getSeconds();
+
+    if (nowMinute < 10) {
+      nowMinute = "0" + nowMinute;
+    }
+
+    if (nowSecond < 10) {
+      nowSecond = "0" + nowSecond;
+    }
+
+    if (nowHour < 12) {
+      greeting = "Good Morning";
+    } else if (nowHour < 17) {
+      greeting = "Good Afternoon";
+    } else {
+      greeting = "Good Evening";
+    }
+
+    document.write("<h4>" + greeting + " and welcome to my website!</h4>")
+    document.write("According to your clock, the time is ");
+    document.write(nowHour + ":" + nowMinute + ":" + nowSecond);
+
+  </script>
+
+  <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+</body>
+</html>
