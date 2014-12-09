@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ch5 Exercise 2</title>
+</head>
+<body>
+
+  <script>
+    // Obtain a list of names from the user, storing each name entered in an array.  Keep getting another name until the user enters nothing.  Sort the names in ascending order and then write them out to the page, with each name on its own line.
+
+    ////////////// My method of solving it  ////////////////////////
+    // var nameList = new Array();
+
+    // function showNamesList() {
+    //   var name = prompt("Enter a name to add to the list:");
+
+    //   if (name !== "") {
+    //     nameList.push(name);
+    //     console.log(nameList);
+    //     showNamesList();
+    //   } else {
+    //     var ascNameList = nameList.sort();
+    //     console.log(ascNameList);
+    //     for (var nameIndex = 0; nameIndex < ascNameList.length; nameIndex++) {
+    //       document.write(ascNameList[nameIndex] + "<br>");
+    //     } 
+    //   }
+    // }
+
+    // showNamesList();
+    ////////////// END My method of solving it  ////////////////////////
+
+    /////////// Book method of solving it (while loop) ////////////////
+    var nameList = new Array();
+    var inputName = "";
+
+    while ( (inputName = prompt("Enter a name to add to the list:")) != "") {
+      nameList[nameList.length] = inputName;
+      console.log(nameList);
+    }
+
+    var sortedNames = nameList.sort();
+    sortedNames = sortedNames.join("<br>");
+    document.write("The sorted name list is: <br> " + sortedNames);
+
+    /////////// END Book method of solving it (while loop) with some tweaks ////////////////
+
+  </script>
+
+  <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+</body>
+</html>
