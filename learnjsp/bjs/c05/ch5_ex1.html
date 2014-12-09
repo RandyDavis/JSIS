@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ch5 Exercise 1</title>
+</head>
+<body>
+
+  <script>
+    // Using the Date type, calculate the date 12 months from now and write this into a web page.
+    var dateNow = new Date();
+    var currentDay = dateNow.getDate();
+    dateNow.setDate(currentDay + 365);
+    document.write("The date one year from now will be " + dateNow + ".");
+
+  </script>
+
+  <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+</body>
+</html>
