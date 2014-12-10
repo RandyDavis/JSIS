@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ch 6 HTML Event Example: connecting Events Using HTML Attributes</title>
+</head>
+<body>
+  <a href="somepage.html" name="linkSomePage" onclick="return linkSomePage_onclick()">Click Me</a>
+
+  <script>
+    function linkSomePage_onclick() {
+      alert('You Clicked?');
+      return true;
+    }
+  </script>
+
+  <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+</body>
+</html>

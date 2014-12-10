@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ch 6 Example 4</title>
+</head>
+<body>
+  <script>
+    function linkSomePage_onclick() {
+      alert('This link is going nowhere');
+      return false;
+    }
+  </script>
+
+  <a href="somepage.html" name="linkSomePage">Click Me</a>
+
+  <script>
+    window.document.links[0].onclick = linkSomePage_onclick;
+  </script>
+
+  <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+</body>
+</html>
