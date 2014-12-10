@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ch 6 Example 7</title>
+  <script>
+    function getBrowserName() {
+      var lsBrowser = navigator.userAgent;
+      if (lsBrowser.indexOf("MSIE") >= 0) {
+        lsBrowser = "MSIE";
+      } else if (lsBrowser.indexOf("Firefox") >= 0) {
+        lsBrowser = "Firefox";
+      } else if (lsBrowser.indexOf("Chrome") >= 0) {
+        lsBrowser = "Chrome";
+      } else if (lsBrowser.indexOf("Safari") >= 0) {
+          lsBrowser = "Safari";
+      } else if (lsBrowser.indexOf("Opera") >= 0) {
+          lsBrowser = "Opera";
+      } else {
+        lsBrowser = "UNKNOWN";
+      }
+      return lsBrowser;
+    }
+
+    function getBrowserVersion() {
+      var findIndex;
+      var browserVersion = 0;
+      var browser = getBrowserName();
+
+      browserVersion = navigator.userAgent;
+      findIndex = browserVersion.indexOf(browser) + browser.length + 1;
+      browserVersion = parseFloat(browserVersion.substring(findIndex, findIndex + 3));
+
+      return browserVersion;
+    }
+  </script>
+
+</head>
+<body>
+  <script>
+    var browserName = getBrowserName();
+    var browserVersion = getBrowserVersion();
+
+    if (browserName == "MSIE") {
+      if (browserVersion < 7) {
+        document.write("Your version of Internet Explorer is too old.");
+      } else {
+        document.write("Your version of Internet Explorer is fully supported.");
+      }
+    } else if (browserName == "Firefox") {
+      document.write("Firefox is fully supported.");
+    } else if (browserName == "Safari") {
+      document.write("Safari is fully supported.");
+    } else if (browserName == "Chrome") {
+      document.write("Chrome is fully supported.");
+    } else if (browserName == "Opera") {
+      document.write("Opera is fully supported.");
+    } else {
+      document.write("<h2>Sorry this browser version is not supported.</h2>");
+    }
+  </script>
+  <noscript>
+    <h2>This website requires a browser supporting scripting.</h2>
+  </noscript>
+
+  <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+</body>
+</html>
