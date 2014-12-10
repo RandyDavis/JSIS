@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ch 6 Exercise 1</title>
+</head>
+<body onload="winLoadFunction()">
+  <script>
+    function winLoadFunction() {
+      var siteLinksCounter;
+      for (siteLinksCounter = 0; siteLinksCounter < document.links.length; siteLinksCounter++) {
+        alert(document.links[siteLinksCounter].href);
+      }
+    }
+  </script>
+
+    <a href="http://google.com">El Googs</a>
+    <a href="http://yahoo.com">Por Hoo</a>
+    <a href="http://msn.com">Que MSN</a>
+    <a href="http://bing.com">Bing Bing</a>
+
+  <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+</body>
+</html>
