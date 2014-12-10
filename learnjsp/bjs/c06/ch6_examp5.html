@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ch 6 Example 5</title>
+  <script>
+    var myImages = new Array("usa.gif", "canada.gif", "jamaica.gif", "mexico.gif");
+
+    function changeImg(that) {
+      var newImgNumber = Math.round(Math.random() * 3);
+
+      while (that.src.indexOf(myImages[newImgNumber]) != -1) {
+        newImgNumber = Math.round(Math.random() *3);
+      }
+
+      that.src = myImages[newImgNumber];
+      return false;
+    }
+  </script>
+</head>
+<body>
+  <img name="img0" src="usa.gif" border="0" onclick="return changeImg(this)">
+  <img name="img1" src="mexico.gif" border="0" onclick="return changeImg(this)">
+
+  <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+</body>
+</html>
