@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ch 6 Exercise 3</title>
+  <script>
+    var imgs = new Array("usa.gif", "canada.gif", "jamaica.gif", "mexico.gif");
+
+    function imgSwap(that) {
+      var newImgNum = Math.round(Math.random() * (imgs.length - 1));
+
+      while (that.src.indexOf(imgs[newImgNum]) != -1) {
+        newImgNum = Math.round(Math.random() * (imgs.length - 1));
+      }
+
+      that.src = imgs[newImgNum];
+      return false;
+    }
+
+    function imgReturn(that) {
+      that.src = imgs[0];
+    }
+  </script>
+</head>
+<body>
+  <!-- Insert an image in the page with the <img/> element. When the mouse pointer rolls over the image, it should switch to a different image. When the mouse pointer rolls out (leaves the image), it should swap back again. (Hint: These events are mouseover and mouseout.) -->
+
+  <img src="usa.gif" alt="US Flag" onmouseover="return imgSwap(this)" onmouseout="imgReturn(this)">
+
+  <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+</body>
+</html>
