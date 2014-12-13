@@ -1,11 +1,11 @@
-// Store the element to be removed in a variable.
-var removeEl = document.getElementsByTagName('li')[3];
+// // Store the element to be removed in a variable.
+// var removeEl = document.getElementsByTagName('li')[3];
 
-// Find the element which contains the element to be removed.
-var containerEl = removeEl.parentNode;
+// // Find the element which contains the element to be removed.
+// var containerEl = removeEl.parentNode;
 
-// Remove the element.
-containerEl.removeChild(removeEl);
+// // Remove the element.
+// containerEl.removeChild(removeEl);
 
 // 2nd time
 // var elToRem = document.getElementsByTagName('li')[3];
@@ -16,3 +16,11 @@ containerEl.removeChild(removeEl);
 // var remEl = document.getElementById('four');
 // var parentalEl = remEl.parentNode;
 // parentalEl.removeChild(remEl);
+
+
+// Another attempt
+var removeEl = document.getElementsByTagName('li')[2];
+
+var containerEl = removeEl.parentNode;
+
+containerEl.removeChild(removeEl);

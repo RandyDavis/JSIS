@@ -61,31 +61,84 @@
 // heading.innerHTML = newHeading;
 
 
-// 3rd time
-// Add items to start and end of list
+// // 3rd time
+// // Add items to start and end of list
+// var list = document.getElementsByTagName('ul')[0];
+
+// // Add new item to end of list
+// var newItemEnd = document.createElement('li');
+// var newEndText = document.createTextNode('brussel sprouts');
+// newItemEnd.appendChild(newEndText);
+// list.appendChild(newItemEnd);
+
+// // Add new item to start of list
+// var newItemStart = document.createElement('li');
+// var newStartText = document.createTextNode('beets');
+// newItemStart.appendChild(newStartText);
+// list.insertBefore(newItemStart, list.firstChild);
+
+// // Give all items new class
+// var listItems = document.querySelectorAll('li');
+// for (var i = 0; i < listItems.length; i++) {
+//   listItems[i].className = 'cool';
+// }
+
+// // Add number of list items to heading
+// var heading = document.querySelector('h2');
+// var headingText = heading.firstChild.nodeValue;
+// var totalItems = listItems.length;
+// var newHeading = headingText + '<span>' + totalItems + '</span>';
+// heading.innerHTML = newHeading;
+
+
+
+// Another attempt
+// Adding Itme to start and end of list
 var list = document.getElementsByTagName('ul')[0];
 
 // Add new item to end of list
-var newItemEnd = document.createElement('li');
-var newEndText = document.createTextNode('brussel sprouts');
-newItemEnd.appendChild(newEndText);
-list.appendChild(newItemEnd);
+var newItemLast = document.createElement('li');
+var newTextLast = document.createTextNode('cream');
+newItemLast.appendChild(newTextLast);
+list.appendChild(newItemLast);
 
 // Add new item to start of list
 var newItemStart = document.createElement('li');
-var newStartText = document.createTextNode('beets');
-newItemStart.appendChild(newStartText);
+var newTextStart = document.createTextNode('banana');
+newItemStart.appendChild(newTextStart);
 list.insertBefore(newItemStart, list.firstChild);
 
-// Give all items new class
+// Give all list itmes a new class
 var listItems = document.querySelectorAll('li');
-for (var i = 0; i < listItems.length; i++) {
+var i;
+for (i = 0; i < listItems.length; i++) {
   listItems[i].className = 'cool';
 }
 
-// Add number of list items to heading
+// Add number of items in the list to the heading
 var heading = document.querySelector('h2');
 var headingText = heading.firstChild.nodeValue;
 var totalItems = listItems.length;
 var newHeading = headingText + '<span>' + totalItems + '</span>';
 heading.innerHTML = newHeading;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
