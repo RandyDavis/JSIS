@@ -67,10 +67,34 @@
 // */
 
 
-// 3rd time
+// // 3rd time
+// function checkUsername() {
+//   var userName = el.value;
+//   if (userName.length < 5) {
+//     elMsg.className = 'warning';
+//     elMsg.textContent = 'Not long enough, yet...';
+//   } else {
+//     elMsg.textContent = '';
+//   }
+// }
+
+// function tipUsername() {
+//   elMsg.className = 'tip';
+//   elMsg.innerHTML = 'Username must be at least 5 characters';
+// }
+
+// var el = document.getElementById('username');
+// var elMsg = document.getElementById('feedback');
+
+// el.addEventListener('focus', tipUsername, false);
+// el.addEventListener('blur', checkUsername, false);
+
+
+
+// Another attempt  
 function checkUsername() {
-  var userName = el.value;
-  if (userName.length < 5) {
+  var username = document.getElementById('username');
+  if (username.value.length < 5) {
     elMsg.className = 'warning';
     elMsg.textContent = 'Not long enough, yet...';
   } else {
@@ -80,7 +104,7 @@ function checkUsername() {
 
 function tipUsername() {
   elMsg.className = 'tip';
-  elMsg.innerHTML = 'Username must be at least 5 characters';
+  elMsg.textContent = 'Username must be at least 5 characters.';
 }
 
 var el = document.getElementById('username');
@@ -88,7 +112,6 @@ var elMsg = document.getElementById('feedback');
 
 el.addEventListener('focus', tipUsername, false);
 el.addEventListener('blur', checkUsername, false);
-
 
 
 

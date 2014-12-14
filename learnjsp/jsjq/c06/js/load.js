@@ -32,10 +32,20 @@ if (el.addEventListener) {
 
 
 // 3rd time 
+// function setup() {
+//   var textInput;
+//   textInput =document.getElementById('username');
+//   textInput.focus();
+// }
+
+// window.addEventListener('load', setup, false);
+
+
+// Another attempt
 function setup() {
   var textInput;
-  textInput =document.getElementById('username');
+  textInput = document.getElementById('username');
   textInput.focus();
 }
 
-window.addEventListener('load', setup, false);
+window.addEventListener('load', setup(), false);
