@@ -26,11 +26,25 @@
 // elUsername.addEventListener('blur', checkUsername, false);
 
 
-// 3rd time
+// // 3rd time
+// function checkUsername() {
+//   var elMsg = document.getElementById('feedback');
+//   if (this.value.length < 5) {
+//     elMsg.textContent = 'Username must be at least 5 characters long.';
+//   } else {
+//     elMsg.textContent = '';
+//   }
+// }
+
+// var elUsername = document.getElementById('username');
+// elUsername.addEventListener('blur', checkUsername, false);
+
+
+// Another attempt
 function checkUsername() {
   var elMsg = document.getElementById('feedback');
   if (this.value.length < 5) {
-    elMsg.textContent = 'Username must be at least 5 characters long.';
+    elMsg.textContent = 'Username must be at least 5 characthers long.';
   } else {
     elMsg.textContent = '';
   }

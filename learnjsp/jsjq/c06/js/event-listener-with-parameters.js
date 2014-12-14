@@ -32,12 +32,29 @@
 
 
 // 3rd time
+// var elUsername = document.getElementById('username');
+// var elMsg = document.getElementById('feedback');
+
+// function checkUsername(minLength) {
+//   if (elUsername.value.length < 5) {
+//     elMsg.textContent = 'Username must be ' + minLength + ' characters or more.';
+//   } else {
+//     elMsg.innerHTML = '';
+//   }
+// }
+
+// elUsername.addEventListener('blur', function() {
+//   checkUsername(5);
+// }, false);
+
+
+// Another attempt
 var elUsername = document.getElementById('username');
 var elMsg = document.getElementById('feedback');
 
 function checkUsername(minLength) {
   if (elUsername.value.length < 5) {
-    elMsg.textContent = 'Username must be ' + minLength + ' characters or more.';
+    elMsg.textContent = 'Username must be at least ' + minLength + ' characters long.';
   } else {
     elMsg.innerHTML = '';
   }
@@ -46,3 +63,10 @@ function checkUsername(minLength) {
 elUsername.addEventListener('blur', function() {
   checkUsername(5);
 }, false);
+
+
+
+
+
+
+

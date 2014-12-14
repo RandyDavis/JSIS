@@ -27,10 +27,24 @@
 
 
 // 3rd time
+// function checkUsername() {
+//   var elMsg = document.getElementById('feedback');
+//   if (this.value.length < 5) {
+//     elMsg.textContent = 'Username must have more than 4 characters';
+//   } else {
+//     elMsg.textContent = '';
+//   }
+// }
+
+// var elUsername = document.getElementById('username');
+// elUsername.onblur = checkUsername;
+
+
+// Another attempt
 function checkUsername() {
   var elMsg = document.getElementById('feedback');
   if (this.value.length < 5) {
-    elMsg.textContent = 'Username must have more than 4 characters';
+    elMsg.textContent = 'Username must be at least 5 characters';
   } else {
     elMsg.textContent = '';
   }
@@ -38,3 +52,7 @@ function checkUsername() {
 
 var elUsername = document.getElementById('username');
 elUsername.onblur = checkUsername;
+
+
+
+
