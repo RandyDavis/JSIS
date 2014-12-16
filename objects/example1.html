@@ -56,6 +56,16 @@
     //   }
     // }
 
+    // var banana = {
+    //     color: "yellow",
+    //     shape: "elongated",
+    //     sweetness: 8,
+
+    //     howSweetAmI: function() {
+    //         console.log('On a scale of 1 - 10, my sweetness rank is: ' + this.sweetness);
+    //     }
+    // }
+
     // /////////////////  End Object Literals  ///////////////////////////
 
 
@@ -73,6 +83,14 @@
     //   console.log("Hmm Hmm Good!");
     // }
 
+    // var banana = new Object();
+    // banana.color = "yellow";
+    // banana.shape = "elongated";
+    // banana.sweetness = 8;
+
+    // banana.howSweetAmI = function() {
+    //     console.log("On a scale of 1 - 10, my sweetness rank is: " + this.sweetness);
+    // }
 
     // Constructor Pattern for Creating Objects
     // function Fruit(theColor, theSweetness, theFruitName, theNativeToLand) {
@@ -104,6 +122,40 @@
     // pineappleFruit.nativeTo();
 
 
+
+    // function CoffeeBean(color, sweetness, bitterness, name, nativeToLand) {
+    //     this.color = color;
+    //     this.sweetness = sweetness;
+    //     this.bitterness = bitterness;
+    //     this.name = name;
+    //     this.nativeToLand = nativeToLand;
+    //     this.nativeTo = function () {
+    //         this.nativeToLand.forEach(function(country) {
+    //             console.log("Grown in: " + country);
+    //         });
+    //     }
+    // }
+    // var aribica = new CoffeeBean("medium-dark", 5, 6, "Aribica", ["Columbia", "Peru", "Mexico", "Guatemala"]);
+
+    
+    // function Car(configs) {
+    //     this.make = configs.make;
+    //     this.model = configs.model;
+    //     this.color = configs.color;
+    //     this.numDoors = configs.numDoors;
+    //     this.builtInCountry = configs.builtInCountry;
+
+    //     this.driveModes = function(configs) {
+    //         if (this.model === "Model S P85D") {
+    //             console.log("This Tesla has a drive mode called 'INSANE' in addition to 'SPORT'!");
+    //         } else {
+    //             console.log("This Tesla only has 'SPORT' as a drive mode.");
+    //         }
+    //     }
+    // }
+
+
+
     // Prototype Pattern for Creating Objects
     // function Fruit() {
 
@@ -123,9 +175,24 @@
     // }
 
     // var mangoFruit = new Fruit();
-    // mangoFruit.showName();  // THis is a Generic Fruit
+    // mangoFruit.showName();  // This is a Generic Fruit
     // mangoFruit.nativeTo();  // Grown in: USA
     // console.log(mangoFruit.color);  // Yellow
+
+    // function Animal(){};
+
+    // Animal.prototype.type = "dog";
+    // Animal.prototype.breed = "golden retriever";
+    // Animal.prototype.color = "gold";
+    // Animal.prototype.numLegs = 4;
+    // Animal.prototype.name = "Jace";
+    // Animal.prototype.showName = function() {
+    //     document.write("This animal is named " + this.name + ".");
+    // }
+
+    // var pet1 = new Animal();
+    // pet1.color;
+    // pet1.showName();
     // ///////////////// End Object Constructors  ///////////////////////////
 
 
@@ -147,6 +214,15 @@
 
     // // Prints true because the school object inherited the toString method from Object.prototype.
     // console.log("toString" in school);  // true
+
+
+    // var school2 = {schoolName: "Baylor"};
+    // console.log("schoolName" in school2);  // true
+    // console.log("schoolType" in school2);  // false
+    // console.log("toString" in school2);  // true
+
+
+
 
     //////////////////// End Own and Inherited Properties  ///////////////////////
 
@@ -285,28 +361,28 @@
 
     JSON.stringify Examples: */
 
-    var christmasList = { mike: "Book", jason: "sweater", chelsea: "iPad" }
-    JSON.stringify(christmasList);
-    // Prints this string:
-    // "{"mike":"Book","jason":"sweater","chelsea":"iPad"}"
+    // var christmasList = { mike: "Book", jason: "sweater", chelsea: "iPad" }
+    // JSON.stringify(christmasList);
+    // // Prints this string:
+    // // "{"mike":"Book","jason":"sweater","chelsea":"iPad"}"
 
-    // To print a stringified object with formatting, add "null" and "4" as parameters:
-    JSON.stringify(christmasList, null, 4);
-    //"{
-        // "mike":"Book",
-        // "jason":"sweater",
-        // "chelsea":"iPad"
-    //}"
+    // // To print a stringified object with formatting, add "null" and "4" as parameters:
+    // JSON.stringify(christmasList, null, 4);
+    // //"{
+    //     // "mike":"Book",
+    //     // "jason":"sweater",
+    //     // "chelsea":"iPad"
+    // //}"
 
-    // JSON.parse Examples \\
-    // The following is a JSON string, so we cannot access the properties with dot notation (like christmasListStr.mike)
-    var christmasListStr = '{"mike":"Book","jason":"sweater","chelsea":"iPad"}';
+    // // JSON.parse Examples \\
+    // // The following is a JSON string, so we cannot access the properties with dot notation (like christmasListStr.mike)
+    // var christmasListStr = '{"mike":"Book","jason":"sweater","chelsea":"iPad"}';
 
-    // Let's convert it ot an object
-    var christmasListObj = JSON.parse(christmasListStr);
+    // // Let's convert it ot an object
+    // var christmasListObj = JSON.parse(christmasListStr);
 
-    // Now that it is an object, we use dot notation
-    console.log(christmasListObj.mike);  // Book
+    // // Now that it is an object, we use dot notation
+    // console.log(christmasListObj.mike);  // Book
 
 
 
