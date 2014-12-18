@@ -101,7 +101,7 @@
     famousPerson.superstar = "Steve Jobs";
 
     // The search for superstar will first look for the superstar property on the famousPerson object, and since we defined it there, that is the property that will be used.  Because we have overwritten the famousPerson's superstar property with one directly on the famousPerson object, the search will NOT proceed up the prototype chain.
-    console.log(famousPerson.superstar);
+    console.log(famousPerson.superstar); // Steve Jobs
     
     // Note that in ECMAScript 5 you can set a property to read only, and in that case you cannot overwrite is as we just did.
 

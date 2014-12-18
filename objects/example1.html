@@ -66,6 +66,19 @@
     //     }
     // }
 
+    
+
+
+    // var orange = {
+    //     color: "orange",
+    //     shape: "round",
+    //     sweetness: 9,
+
+    //     howSweetAmI: function() {
+    //         console.log('I have ' + this.sweetness + ' sweetness.');
+    //     }
+    // }
+
     // /////////////////  End Object Literals  ///////////////////////////
 
 
@@ -136,6 +149,18 @@
     //     }
     // }
     // var aribica = new CoffeeBean("medium-dark", 5, 6, "Aribica", ["Columbia", "Peru", "Mexico", "Guatemala"]);
+
+    function Orange(color, sweetness, shape) {
+        this.color = color;
+        this.sweetness = sweetness;
+        this.shape = shape;
+
+        this.howSweetAmI = function(){
+            console.log("I have " + this.sweetness + " sweetness.");
+        }
+    }
+
+    var orange = new Orange("orange", 9, "round");
 
     
     // function Car(configs) {
