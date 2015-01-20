@@ -7,15 +7,22 @@
 <body>
   
   <script type="text/javascript">
-    // The following code uses the prompt() function to get 2 numbers fro mteh user.  It then addes those two numbers together and writes the result to the page:
+    // The following code uses the prompt() function to get 2 numbers from the user.  It then adds those two numbers together and writes the result to the page:
     // However, if you try the code out, you'll discover that it doesn't work.  Why not?  Change the code so that it does work.
 
+    // var firstNumber = prompt("Enter the first number", "");
+    // var secondNumber = prompt("Enter the second number", "");
+    // var theTotal = parseInt(firstNumber) + parseInt(secondNumber);
+    // document.write(firstNumber + " added to " + secondNumber + " equals " + theTotal + ".");
+
+    // // I had to add the parseInt() function to the strings that were returned from the prompts in order for it to work correctly.
+
+
+    // Another attempt
     var firstNumber = prompt("Enter the first number", "");
     var secondNumber = prompt("Enter the second number", "");
     var theTotal = parseInt(firstNumber) + parseInt(secondNumber);
-    document.write(firstNumber + " added to " + secondNumber + " equals " + theTotal + ".");
-
-    // I had to add the parseInt() function to the strings that were returned from the prompts in order for it to work correctly.
+    document.write(firstNumber + " added to " + secondNumber + " equals " + theTotal);
     
 
   </script>
