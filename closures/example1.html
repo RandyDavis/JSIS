@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Closures Example</title>
+</head>
+<body>
+
+  <script>
+    function showName(firstName, lastName) {
+      var nameIntro = "Your name is ";
+
+      // this inner function has access to the outer function's variables, including the parameter
+      function makeFullName() {
+        return nameIntro + firstName + " " + lastName;
+      }
+
+      return makeFullName();
+    }
+
+    console.log(showName("Michael", "Jackson")); // Your name is Michael Jackson
+  </script>
+
+  <!-- Live Reload Script -->
+  <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+</body>
+</html>
