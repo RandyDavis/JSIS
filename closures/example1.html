@@ -25,26 +25,99 @@
 
 
     // Closures having access to outer function's variables after outer function returns
-    function celebrityName(firstName) {
-      var nameIntro = "This celebrity is ";
+    // function celebrityName(firstName) {
+    //   var nameIntro = "This celebrity is ";
 
-      // this inner function has access to the outer function's variables, including the parameter
-      function lastName(theLastName) {
-        return nameIntro + firstName + " " + theLastName;
+    //   // this inner function has access to the outer function's variables, including the parameter
+    //   function lastName(theLastName) {
+    //     return nameIntro + firstName + " " + theLastName;
+    //   }
+    //   return lastName;
+    // }
+
+    // var mjName = celebrityName("Michael"); // At this juncture, the celebrityName outer funcction has returned
+    // console.log(mjName("Mills"));
+
+
+    // // The closure(lastName) is called here after the outer function has returned above
+    // // Yet, the closure still has access to the outer function's variables and parameter
+    // console.log(mjName("Jackson")); // This celebrity is Michael Jackson
+
+
+
+    // Closures store references to the outer function's variables; they don't store the actual value;  Closures get more interesting when the value of the outer function's variable changes before the closure is called.
+
+    function celebrityID() {
+      var celebrityID = 999;
+
+      // We are returning an object with some inner functions
+      // All the innner functions have acces to the outer function's variables
+      return {
+        getID: function() {
+          // This inner function will return the UPDATED celebrityID variable
+          // It will return the current value of celebrityID, even after the changeTheID function changes it
+          return celebrityID;
+        },
+        setID: function(theNewID) {
+          // This inner function will change the outer function's variable anytime
+          celebrityID = theNewID;
+        }
       }
-      return lastName;
     }
 
-    var mjName = celebrityName("Michael"); // At this juncture, the celebrityName outer funcction has returned
-    console.log(mjName("Mills"));
+    var mjID = celebrityID();
+    mjID.getID(); // 999
+    mjID.setID(567); // Changes the outer function's variable
+    mjID.getID(); // 567
+    
 
 
-    // The closure(lastName) is called here after the outer function has returned above
-    // Yet, the closure still has access to the outer function's variables and parameter
-    console.log(mjName("Jackson")); // This celebrity is Michael Jackson
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   </script>
 
   <!-- Live Reload Script -->
   <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 </body>
 </html>
+
+
+
+
