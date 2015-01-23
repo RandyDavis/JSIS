@@ -24,7 +24,7 @@
 
 
 
-    // Closures having access to outer function's variables after outer function returns
+    // 1 - Closures having access to outer function's variables after outer function returns
     // function celebrityName(firstName) {
     //   var nameIntro = "This celebrity is ";
 
@@ -45,33 +45,80 @@
 
 
 
-    // Closures store references to the outer function's variables; they don't store the actual value;  Closures get more interesting when the value of the outer function's variable changes before the closure is called.
+    // 2 - Closures store references to the outer function's variables; they don't store the actual value;  Closures get more interesting when the value of the outer function's variable changes before the closure is called.
 
-    function celebrityID() {
-      var celebrityID = 999;
+    // function celebrityID() {
+    //   var celebrityID = 999;
 
-      // We are returning an object with some inner functions
-      // All the innner functions have acces to the outer function's variables
-      return {
-        getID: function() {
-          // This inner function will return the UPDATED celebrityID variable
-          // It will return the current value of celebrityID, even after the changeTheID function changes it
-          return celebrityID;
-        },
-        setID: function(theNewID) {
-          // This inner function will change the outer function's variable anytime
-          celebrityID = theNewID;
-        }
-      }
-    }
+    //   // We are returning an object with some inner functions
+    //   // All the innner functions have acces to the outer function's variables
+    //   return {
+    //     getID: function() {
+    //       // This inner function will return the UPDATED celebrityID variable
+    //       // It will return the current value of celebrityID, even after the changeTheID function changes it
+    //       return celebrityID;
+    //     },
+    //     setID: function(theNewID) {
+    //       // This inner function will change the outer function's variable anytime
+    //       celebrityID = theNewID;
+    //     }
+    //   }
+    // }
 
-    var mjID = celebrityID();
-    mjID.getID(); // 999
-    mjID.setID(567); // Changes the outer function's variable
-    mjID.getID(); // 567
+    // var mjID = celebrityID();
+    // mjID.getID(); // 999
+    // mjID.setID(567); // Changes the outer function's variable
+    // mjID.getID(); // 567
     
 
 
+    // 3 - Closures Goen Awry: Because closures have acces to the updated values of the outer function's variables, they can also lead to bugs when the outer function's variable changes with a for loop.  Thus:
+
+    // This example is explained in detail after the code box
+    // function celebrityIDCreator(theCelebrities) {
+    //   var i;
+    //   var uniqueID = 100;
+    //   for (i = 0; i < theCelebrities.length; i++) {
+    //     theCelebrities[i]["id"] = function() {
+    //       return uniqueID + i;
+    //     }
+    //   }
+    //   return theCelebrities;
+    // }
+
+    // var actionCelebs = [{name: "Stallone", id: 0}, {name: "Cruise", id: 0}, {name: "Willis", id: 0}];
+
+    // var createdIDForActionCelebs = celebrityIDCreator(actionCelebs);
+
+    // var stalloneID = createdIDForActionCelebs[0]; console.log(stalloneID.id()); //103
+
+    // In the preceding example, by the time the anonymous functions are called, the value of i is 3 (the length of the array and then it increments). The number 3 was added to the uniqueID to create 103 for ALL the celebritiesID. So every position in the returned array get id = 103, instead of the intended 100, 101, 102.
+
+    // The reason this happened was because, as we have discussed in the previous example, the closure (the anonymous function in this example) has access to the outer function’s variables by reference, not by value. So just as the previous example showed that we can access the updated variable with the closure, this example similarly accessed the i variable when it was changed, since the outer function runs the entire for loop and returns the last value of i, which is 103.
+
+    // To fix this side effect (bug) in closures, you can use an Immediately Invoked Function Expression (IIFE), such as the following:
+    function celebrityIDCreator(theCelebrities) {
+      var i;
+      var uniqueID = 100;
+      for(i = 0; i < theCelebrities.length; i++) {
+        theCelebrities[i]["id"] = function (j) { //the j parametric variable is the i passed in on invocation of this IIFE
+          return function() {
+            return uniqueID + j;  // each iteration of the for loop passes the current value of i into this IIFE and it saves the correct value to the array
+          }() // By adding () at the end of this function, we are executing it immediately and return just the value of uniqueID + j, instead of returning a function.
+        }(i); // immediately invoke the function passing the i variable as a parameter
+      }
+
+      return theCelebrities;
+    }
+
+    var actionCelebs = [{name: "Stallone", id: 0}, {name: "Cruise", id: 0}, {name: "Willis", id: 0}];
+
+    var createIdForActionCelebs = celebrityIDCreator(actionCelebs);
+    var stalloneID = createIdForActionCelebs[0];
+    console.log(stalloneID.id); // 100
+
+    var cruiseID = createIdForActionCelebs[1];
+    console.log(cruiseID.id); // 101
 
 
 
