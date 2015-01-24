@@ -25,7 +25,23 @@
     // var name = person.get("name"); // "Randy"
     // var child = person.get("child"); // "Champ"
 
-    
+
+    // SETTING MODEL DEFAULTS
+    Person = Backbone.Model.extend({
+      defaults: {
+        name: "Fetus",
+        age: 0,
+        child: ''
+      },
+      initialize: function() {
+        alert("Welcome to this world");
+      }
+    });
+
+    var person = new Person({ name: "Randy", age: 34, child: "Champ" });
+    var name = person.get("name");  // "Randy"
+    var age = person.get("age");  // 34
+    var child = person.get("child");  // "Champ"
 
 
   </script>
