@@ -27,21 +27,79 @@
 
 
     // SETTING MODEL DEFAULTS
-    Person = Backbone.Model.extend({
-      defaults: {
-        name: "Fetus",
-        age: 0,
-        child: ''
-      },
-      initialize: function() {
-        alert("Welcome to this world");
-      }
-    });
+    // Person = Backbone.Model.extend({
+    //   defaults: {
+    //     name: "Fetus",
+    //     age: 0,
+    //     child: ''
+    //   },
+    //   initialize: function() {
+    //     alert("Welcome to this world");
+    //   }
+    // });
 
-    var person = new Person({ name: "Randy", age: 34, child: "Champ" });
-    var name = person.get("name");  // "Randy"
-    var age = person.get("age");  // 34
-    var child = person.get("child");  // "Champ"
+    // var person = new Person({ name: "Randy", age: 34, child: "Champ" });
+    // var name = person.get("name");  // "Randy"
+    // var age = person.get("age");  // 34
+    // var child = person.get("child");  // "Champ"
+
+
+    // MANIPULATING MODEL ATTRIBUTES
+    // Person = Backbone.Model.extend({
+    //   defaults: {
+    //     name: 'Fetus',
+    //     age: 0,
+    //     child: ''
+    //   },
+    //   initialize: function() {
+    //     alert("Welcome to this world");
+    //   },
+    //   adopt: function(newChildsName) {
+    //     this.set({ child: newChildsName });
+    //   }
+    // });
+
+    // var person = new Person({ name: "Randy", age: 34, child: "Champ" });
+    // person.adopt("Jilly");
+    // var child = person.get("child");  // 'Jilly'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   </script>
