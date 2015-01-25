@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Backbone JS - Views</title>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js"></script>
+</head>
+<body>
+
+  <!-- The "el" property
+    The "el" property references the DOM object created in the browser. Every Backbone.js view has an "el" property, and if it is not defined, Backbone.js will construct its own, which is an empty div element.
+
+    Let us set our view's "el" property to div#search_container, effectively making Backbone.View the owner of the DOM element.
+   
+  <div id="search_container"></div>
+
+  <script>
+    SearchView = Backbone.View.extend({
+      initialize: function() {
+        alert("Alerts Suck!");
+      }
+    });
+    // The initialize function is always called when instantiating a BBjs View.
+    // Consider it the constructor of the class.
+    var search_view = new SearchView({ el: $("#search_container") });
+    // ** Keep in mind that this binds the container element.  Any events we trigger must be in this element!
+  </script>
+
+  --> <!-- End The "el" property -->
+
+
+
+
+
+  <!-- Loading a Template 
+    Backbone.js is dependent on Underscore.js, which includes its own micro-templating solution. Refer to Underscore.js's documentation for more information.
+
+    Let us implement a "render()" function and call it when the view is initialized. The "render()" function will load our template into the view's "el" property using jQuery.
+
+
+  <script type="text/template" id="search_template">
+    <label>Search</label>
+    <input type="text" id="search_input">
+    <input type="button" id="search_button" value="Search">
+  </script>
+
+  <div id="search_container"></div>
+
+  <script>
+    SearchView = Backbone.View.extend({
+      initialize: function() {
+        this.render();
+      },
+      render: function() {
+        // Compile the template using underscore
+        var template = _.template( $("#search_template").html(), {} );
+        // Load the compiled HTML into the Backbone "el"
+        this.$el.html( template );
+      }
+    });
+
+    var search_view = new SearchView({ el: $("#search_container") });
+    // TIP: Place all your templates in a file and server them from a CDN.  This ensures your users will always have your application cached.
+
+  </script>
+  --> <!-- End Loading a Template -->
+
+
+
+
+
+  <!-- Listening for Events 
+    To attach a listener to our view, we use the "events" attribute of Backbone.View. Remember that event listeners can only be attached to child elements of the "el" property. Let us attach a "click" listener to our button.
+
+
+  -->
+
+  <script type="text/template" id="search_template">
+    <label>Search</label>
+    <input type="text" id="search_input">
+    <input type="button" id="search_button" value="Search">
+  </script>
+
+  <div id="search_container"></div>
+
+  <script>
+    SearchView = Backbone.View.extend({
+      initialize: function() {
+        this.render();
+      },
+      render: function() {
+        var template = _.template( $("#search_template").html(), {} );
+        this.$el.html(template);
+      },
+      events: {
+        "click input[type=button]": "doSearch"
+      },
+      doSearch: function(event) {
+        // Button clicked, you can access the element that was clicked with event.currentTarget
+        alert("Search for " + $("#search_input").val());
+      }
+    });
+
+    var search_view = new SearchView({ el: $("#search_container") });
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Live Reload Script -->
+  <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+</body>
+</html>
