@@ -75,7 +75,6 @@
     To attach a listener to our view, we use the "events" attribute of Backbone.View. Remember that event listeners can only be attached to child elements of the "el" property. Let us attach a "click" listener to our button.
 
 
-  -->
 
   <script type="text/template" id="search_template">
     <label>Search</label>
@@ -105,6 +104,51 @@
 
     var search_view = new SearchView({ el: $("#search_container") });
   </script>
+  --> <!-- End Listening for Events -->
+
+
+
+
+  <!-- TIPS AND TRICKS
+    - USING TEMPLATE VARIABLES
+   -->
+  
+
+  <script type="text/template" id="search_template">
+  // Access template variables with <%= %>
+    <label><%= search_label %></label>
+    <input type="text" id="search_input">
+    <input type="button" id="search_button" value="Search">
+  </script>
+
+  <div id="search_container"></div>
+
+  <script>
+    SearchView = Backbone.View.extend({
+      initialize: function() {
+        this.render();
+      },
+      render: function() {
+        // Pass variables in using Underscore.js Template
+        var variables = { search_label: "My Search" };
+        // Compile the template using underscore
+        var template = _.template( $("#search_template").html(), variables );
+        // Load the compiled HTML into the Backbone 'el'
+        this.$el.html(template);
+      },
+      events: {
+        "click input[type=button]": "doSearch"
+      },
+      doSearch: function(event) {
+        alert("Search for " + $("#search_input").val());
+      }
+    });
+
+    var search_view = new SearchView({ el: $("#search_container") }); 
+
+  </script>
+
+
 
 
 
