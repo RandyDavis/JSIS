@@ -27,16 +27,16 @@
 
 
     // SETTING MODEL DEFAULTS
-    // Person = Backbone.Model.extend({
-    //   defaults: {
-    //     name: "Fetus",
-    //     age: 0,
-    //     child: ''
-    //   },
-    //   initialize: function() {
-    //     alert("Welcome to this world");
-    //   }
-    // });
+    Person = Backbone.Model.extend({
+      defaults: {
+        name: "Fetus",
+        age: 0,
+        child: ''
+      },
+      initialize: function() {
+        alert("Welcome to this world");
+      }
+    });
 
     // var person = new Person({ name: "Randy", age: 34, child: "Champ" });
     // var name = person.get("name");  // "Randy"
@@ -168,18 +168,58 @@
     // When a model has an id, we know that it exists on the server, so if we wish to remove it from the server we call 'destroy'.  'destroy' will fire off a DELETE /user/id (conforming to RESTful conventions)
 
       // Here we have set the 'id' of the model
-        var user = new UserModel({
-          id: 1,
-          name: 'Randy',
-          email: 'randy@example.com'
-        });
+        // var user = new UserModel({
+        //   id: 1,
+        //   name: 'Randy',
+        //   email: 'randy@example.com'
+        // });
 
-        // Because there is 'id' present, BBjs wil fire DELETE /user/1
-        user.destroy({
-          success: function() {
-            alert('Destroyed');
+        // // Because there is 'id' present, BBjs wil fire DELETE /user/1
+        // user.destroy({
+        //   success: function() {
+        //     alert('Destroyed');
+        //   }
+        // });
+
+
+
+    // TIPS AND TRICKS
+
+      // GET ALL THE CURRENT ATTRIBUTES
+      var person = new Person({ name: 'Randy', age: 34 });
+        var attributes = person.toJSON();  // { name: "Randy", age: 34 }
+        // This simply returns a copy of the current attributes
+
+        var attributes = person.attributes;
+        // The line above gives a direct reference to the attributes and you should be careful when playing with it.  Best practice would suggest that you use .set() to edit attributes of a model to take advantage of backbone listeners.
+
+
+
+      // VALIDATE DATA BEFORE YOU SET OR SAVE IT
+      Person = Backbone.Model.extend({
+        // If you return a string from the validate function, BBjs will throw an error
+        validate: function(attributes) {
+          if (attributes.age < 0 && attributes.name != "Dr Manhattan") {
+            return "You can't be negative years old";
           }
-        });
+        },
+        initialize: function() {
+          alert("Welcome to this world");
+          this.bind("error", function(model, error) {
+            // We have received an error, log it, alert it or forget it :)
+            alert( error );
+          });
+        }
+      });
+
+      var person2 = new Person;
+      person.set({ name: "Mary Poppins", age: -1 });
+      // Will trigger an alert outputting the error
+
+      var person3 = new Person;
+      person3.set({ name: "Dr Manhattan", age: -1 });
+      // God have mercy on our souls
+
 
 
 
