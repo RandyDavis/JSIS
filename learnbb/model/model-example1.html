@@ -85,14 +85,45 @@
 
 
     // INTERACTING WITH THE SERVER
-    var UserModel = Backbone.Model.extend({
-      urlRoot: '/user',
-      defaults: {
-        name: "",
-        age: ""
-      }
-    });
+    // for tutorial purposes, pretend that we have a mysql table called Users with columns id, name, and email
+    // var UserModel = Backbone.Model.extend({
+    //   urlRoot: '/user',
+    //   defaults: {
+    //     name: "",
+    //     email: ""
+    //   }
+    // });
 
+
+
+    //  CREATING A NEW MODEL
+    // var UserModel = Backbone.Model.extend({
+    //   urlRoot: '/user',
+    //   defaults: {
+    //     name: '',
+    //     email: ''
+    //   }
+    // });
+
+    // var user = new UserModel();
+    // // Notice that we haven't set an 'id'
+    // var userDetails = {
+    //   name: "Randy",
+    //   email: "randy@example.com"
+    // };
+    // // Because we have not set a 'id' the server will call 
+    // // POST /user with a payload of { name: 'Randy', email: 'randy@example.com'}
+    // // The server should save the data and return a response containing the new 'id'
+    // user.save(userDetails, {
+    //   success: function(user) {
+    //     alert(user.toJSON());
+    //   }
+    // });
+
+
+    
+    // GETTING A MODEL
+    
 
 
 
