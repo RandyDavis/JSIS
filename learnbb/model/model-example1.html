@@ -205,7 +205,7 @@
         },
         initialize: function() {
           alert("Welcome to this world");
-          this.bind("error", function(model, error) {
+          this.on("invalid", function(model, error) {
             // We have received an error, log it, alert it or forget it :)
             alert( error );
           });
@@ -213,11 +213,11 @@
       });
 
       var person2 = new Person;
-      person.set({ name: "Mary Poppins", age: -1 });
+      person.set({ name: "Mary Poppins", age: -1 }, { validate: true });
       // Will trigger an alert outputting the error
 
       var person3 = new Person;
-      person3.set({ name: "Dr Manhattan", age: -1 });
+      person3.set({ name: "Dr Manhattan", age: -1 }, { validate: true });
       // God have mercy on our souls
 
 
