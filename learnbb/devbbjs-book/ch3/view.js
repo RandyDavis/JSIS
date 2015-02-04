@@ -120,7 +120,17 @@
 
 
 // *** The events hash ***
-
+var TodoView = Backbone.View.extend({
+  tagName: 'li',
+  // with an events hash containg DOM elements
+  // specific to an item:
+  events: {
+    'click .toggle': 'toggleCompleted',
+    'dblclick label': 'edit',
+    'click .destroy': 'clear',
+    'blur .edit': 'close'
+  }
+});
 
 
 
