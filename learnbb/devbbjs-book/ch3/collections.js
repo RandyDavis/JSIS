@@ -93,6 +93,11 @@ var todo2 = todos.get(2);
 // Models, as objects, are passed by reference
 console.log(todo2 === myTodo); // true
 
+var todoCid = todos.get(todo2.cid);
+
+// As mentioned in previous example, models are passed by reference
+console.log(todoCid == myTodo);
+
 
 
 
