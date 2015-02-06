@@ -122,24 +122,49 @@
 
 // we're also able to bind to a change event to listen for changes to any of the models
 // in the collection
-var TodosCollection = new Backbone.Collection();
+// var TodosCollection = new Backbone.Collection();
 
-// log a message if a model in the collection changes
-TodosCollection.on("change", function(model) {
-  console.log("Changed my mind! I should " + model.get('title'));
-});
+// // log a message if a model in the collection changes
+// TodosCollection.on("change", function(model) {
+//   console.log("Changed my mind! I should " + model.get('title'));
+// });
 
-TodosCollection.add([
-  {title: 'go to Jamaica.', completed: false, id: 3}
-]);
+// TodosCollection.add([
+//   {title: 'go to Jamaica.', completed: false, id: 3}
+// ]);
 
-var myTodo = TodosCollection.get(3);
+// var myTodo = TodosCollection.get(3);
 
-myTodo.set('title', 'go fishing');
+// myTodo.set('title', 'go fishing');
 // logs: "Changed my mind! I should go fishing"
 
 
 
+// jQuery-style event maps
+var Todo = Backbone.Model.extend({
+  defaults: {
+    title: '',
+    completed: false
+  }
+});
+
+var myTodo = new Todo();
+myTodo.set({title: 'Buy some cookies', completed: true});
+
+myTodo.on({
+  'change:title':titleChanged,
+  'change:completed':stateChanged
+});
+
+function titleChanged(){
+  console.log("The title was changed.");
+}
+
+function stateChanged(){
+  console.log("The state was changed.");
+}
+
+myTodo.set({title: 'Get the groceries'});
 
 
 
