@@ -73,30 +73,78 @@
 
 // *** Retrieving Models ***
 // another way to retrieve a model from a collection
-var Todo = Backbone.Model.extend({
-  defaults: {
-    title: '',
-    completed: false
-  }
+// var Todo = Backbone.Model.extend({
+//   defaults: {
+//     title: '',
+//     completed: false
+//   }
+// });
+
+// var TodosCollection = Backbone.Collection.extend({
+//   model: Todo
+// });
+// var myTodo = new Todo({ title: "REad the whole book", id: 2});
+
+// // pass array of models on collection instantiation
+// var todos = new TodosCollection([myTodo]);
+
+// var todo2 = todos.get(2);
+
+// // Models, as objects, are passed by reference
+// console.log(todo2 === myTodo); // true
+
+// var todoCid = todos.get(todo2.cid);
+
+// // As mentioned in previous example, models are passed by reference
+// console.log(todoCid == myTodo);
+
+
+
+
+
+// **** Listening for Events ****
+// var TodosCollection = new Backbone.Collection();
+
+// TodosCollection.on("add", function(todo) {
+//   console.log("I should " + todo.get("title") + ". Have I done it before? " + (todo.get("completed") ? 'Yeah!': 'No'));
+// });
+
+// TodosCollection.add([
+//   { title: 'go to Jamaica', completed: false },
+//   { title: 'go to China', completed: false },
+//   { title: 'go to Disneyland', completed: true }
+// ]);
+// The above logs:
+// I should go to Jamaica. Have I done it before? No.
+// I should go to China. Have I done it before? No.
+// I should go to Disneyland. Have I done it before? Yeah!
+
+
+// we're also able to bind to a change event to listen for changes to any of the models
+// in the collection
+var TodosCollection = new Backbone.Collection();
+
+// log a message if a model in the collection changes
+TodosCollection.on("change", function(model) {
+  console.log("Changed my mind! I should " + model.get('title'));
 });
 
-var TodosCollection = Backbone.Collection.extend({
-  model: Todo
-});
-var myTodo = new Todo({ title: "REad the whole book", id: 2});
+TodosCollection.add([
+  {title: 'go to Jamaica.', completed: false, id: 3}
+]);
 
-// pass array of models on collection instantiation
-var todos = new TodosCollection([myTodo]);
+var myTodo = TodosCollection.get(3);
 
-var todo2 = todos.get(2);
+myTodo.set('title', 'go fishing');
+// logs: "Changed my mind! I should go fishing"
 
-// Models, as objects, are passed by reference
-console.log(todo2 === myTodo); // true
 
-var todoCid = todos.get(todo2.cid);
 
-// As mentioned in previous example, models are passed by reference
-console.log(todoCid == myTodo);
+
+
+
+
+
 
 
 
