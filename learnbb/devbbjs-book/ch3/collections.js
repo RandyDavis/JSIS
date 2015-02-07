@@ -253,16 +253,35 @@ TodosCollection.reset([
 
 console.log('Collection size: ' + TodosCollection.length);  // Collection size: 1
 
+// Another useful tip is to use .reset() with no arguments to clear the collection completely
+TodosCollection.reset([]);
+
+console.log('Collection size: ' + TodosCollection.length);  // Collection size: 0
 
 
+// * Also not that when listening to a reset event, the list of previous models is available
+// * in options.previouModels, for convenience:
+var Todo = new Backbone.Model();
+var Todos = new Backbone.Collection([Todo])
+  .on('reset', function(Todos, options) {
+    console.log(options.previousModels);
+    console.log([Todo]);
+    console.log(options.previousModels[0] === Todo); // true
+  });
+  Todos.reset([]);
 
 
+// * An update() method is available for collections (and is also available as an option to fetch) 
+// * for smart updating of sets of models. This method attempts to perform smart updating of a collection
+// * using a specified list of models. When a model in this list isn’t present in the collection, it is added. 
+// * If it is present, its attributes will be merged. Models that are present in the collection but not in the list are removed.
 
+var theBeatles = new Collection(['john', 'paul', 'george', 'ringo']);
 
-
-
-
-
+theBeatles.update(['john', 'paul', 'george', 'pete']);
+// Fires a `remove` event for 'ringo', and an `add` event for 'pete'.
+// Updates any of john, paul, and george's attributes that may have
+// changed over the years.
 
 
 
