@@ -167,6 +167,65 @@ function stateChanged(){
 myTodo.set({title: 'Get the groceries'});
 
 
+// Backbone events once() method
+// Define an object with two counters
+var TodoCounter = { counterA: 0, counterB: 0 };
+// Mix in Backbone Events
+_.extend(TodoCounter, Backbone.Events);
+
+// Increment counterA, triggering an event
+var incrA = function() {
+  TodoCounter.counterA += 1;
+  TodoCounter.trigger('event');
+};
+
+// Increment counterB
+var incrB = function() {
+  TodoCounter.counterB += 1;
+};
+
+// Use once rather than having to explicitly unbind our event listener
+TodoCounter.once('event', incrA);
+TodoCounter.once('event', incrB);
+
+// Trigger the event once again
+TodoCounter.trigger('event');
+
+// Check our output
+console.log(TodoCounter.counterA === 1); // true
+console.log(TodoCounter.counterB == 1); // true
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
