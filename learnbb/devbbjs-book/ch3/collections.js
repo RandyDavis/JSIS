@@ -198,32 +198,32 @@
 
 
 // *** Resetting/Refreshing Collections ***
-var TodosCollection = new Backbone.Collection();
+// var TodosCollection = new Backbone.Collection();
 
-TodosCollection.add([
-  { id: 1, title: 'go to Jamaica', completed: false },
-  { id: 2, title: 'go to China', completed: false },
-  { id: 3, title: 'go to Disneyland', completed: true }
-]);
+// TodosCollection.add([
+//   { id: 1, title: 'go to Jamaica', completed: false },
+//   { id: 2, title: 'go to China', completed: false },
+//   { id: 3, title: 'go to Disneyland', completed: true }
+// ]);
 
-// we can listen for add/change/remove events
-TodosCollection.on('add', function(model) {
-  console.log("Added " + model.get('title'));
-});
+// // we can listen for add/change/remove events
+// TodosCollection.on('add', function(model) {
+//   console.log("Added " + model.get('title'));
+// });
 
-TodosCollection.on("remove", function(model) {
-  console.log("Removed " + model.get('title'));
-});
+// TodosCollection.on("remove", function(model) {
+//   console.log("Removed " + model.get('title'));
+// });
 
-TodosCollection.on("change:completed", function(model) {
-  console.log("Completed " + model.get('title'));
-});
+// TodosCollection.on("change:completed", function(model) {
+//   console.log("Completed " + model.get('title'));
+// });
 
-TodosCollection.set([
-  { id: 1, title: 'go to Jamaica', completed: true },
-  { id: 2, title: 'go to China', completed: false },
-  { id: 4, title: 'go to Disneyland', completed: false }
-]);
+// TodosCollection.set([
+//   { id: 1, title: 'go to Jamaica', completed: true },
+//   { id: 2, title: 'go to China', completed: false },
+//   { id: 4, title: 'go to Disneyland', completed: false }
+// ]);
 
 // Above logs:
     // Removed go to Disneyland.
@@ -231,6 +231,27 @@ TodosCollection.set([
     // Added go to Disney World.
 
 
+// Use Collection.reset() to replace the entire content of the collection
+var TodosCollection = new Backbone.Collection();
+
+// we can listen for reset events
+TodosCollection.on("reset", function(){
+  console.log("Collection reset");
+});
+
+TodosCollection.add([
+  {title: 'go to Jamaica.', completed: false},
+  {title: 'go to China.', completed: false},
+  {title: 'go to Disneyland.', completed: true}
+]);
+
+console.log('Collection size: ' + TodosCollection.length);  // Collection size: 3
+
+TodosCollection.reset([
+  {title: 'go to Cuba.', completed: false}
+]);
+
+console.log('Collection size: ' + TodosCollection.length);  // Collection size: 1
 
 
 
