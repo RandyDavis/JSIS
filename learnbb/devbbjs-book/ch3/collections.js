@@ -141,63 +141,94 @@
 
 
 // jQuery-style event maps
-var Todo = Backbone.Model.extend({
-  defaults: {
-    title: '',
-    completed: false
-  }
+// var Todo = Backbone.Model.extend({
+//   defaults: {
+//     title: '',
+//     completed: false
+//   }
+// });
+
+// var myTodo = new Todo();
+// myTodo.set({title: 'Buy some cookies', completed: true});
+
+// myTodo.on({
+//   'change:title':titleChanged,
+//   'change:completed':stateChanged
+// });
+
+// function titleChanged(){
+//   console.log("The title was changed.");
+// }
+
+// function stateChanged(){
+//   console.log("The state was changed.");
+// }
+
+// myTodo.set({title: 'Get the groceries'});
+
+
+// // Backbone events once() method
+// // Define an object with two counters
+// var TodoCounter = { counterA: 0, counterB: 0 };
+// // Mix in Backbone Events
+// _.extend(TodoCounter, Backbone.Events);
+
+// // Increment counterA, triggering an event
+// var incrA = function() {
+//   TodoCounter.counterA += 1;
+//   TodoCounter.trigger('event');
+// };
+
+// // Increment counterB
+// var incrB = function() {
+//   TodoCounter.counterB += 1;
+// };
+
+// // Use once rather than having to explicitly unbind our event listener
+// TodoCounter.once('event', incrA);
+// TodoCounter.once('event', incrB);
+
+// // Trigger the event once again
+// TodoCounter.trigger('event');
+
+// // Check our output
+// console.log(TodoCounter.counterA === 1); // true
+// console.log(TodoCounter.counterB == 1); // true
+
+
+
+// *** Resetting/Refreshing Collections ***
+var TodosCollection = new Backbone.Collection();
+
+TodosCollection.add([
+  { id: 1, title: 'go to Jamaica', completed: false },
+  { id: 2, title: 'go to China', completed: false },
+  { id: 3, title: 'go to Disneyland', completed: true }
+]);
+
+// we can listen for add/change/remove events
+TodosCollection.on('add', function(model) {
+  console.log("Added " + model.get('title'));
 });
 
-var myTodo = new Todo();
-myTodo.set({title: 'Buy some cookies', completed: true});
-
-myTodo.on({
-  'change:title':titleChanged,
-  'change:completed':stateChanged
+TodosCollection.on("remove", function(model) {
+  console.log("Removed " + model.get('title'));
 });
 
-function titleChanged(){
-  console.log("The title was changed.");
-}
+TodosCollection.on("change:completed", function(model) {
+  console.log("Completed " + model.get('title'));
+});
 
-function stateChanged(){
-  console.log("The state was changed.");
-}
+TodosCollection.set([
+  { id: 1, title: 'go to Jamaica', completed: true },
+  { id: 2, title: 'go to China', completed: false },
+  { id: 4, title: 'go to Disneyland', completed: false }
+]);
 
-myTodo.set({title: 'Get the groceries'});
-
-
-// Backbone events once() method
-// Define an object with two counters
-var TodoCounter = { counterA: 0, counterB: 0 };
-// Mix in Backbone Events
-_.extend(TodoCounter, Backbone.Events);
-
-// Increment counterA, triggering an event
-var incrA = function() {
-  TodoCounter.counterA += 1;
-  TodoCounter.trigger('event');
-};
-
-// Increment counterB
-var incrB = function() {
-  TodoCounter.counterB += 1;
-};
-
-// Use once rather than having to explicitly unbind our event listener
-TodoCounter.once('event', incrA);
-TodoCounter.once('event', incrB);
-
-// Trigger the event once again
-TodoCounter.trigger('event');
-
-// Check our output
-console.log(TodoCounter.counterA === 1); // true
-console.log(TodoCounter.counterB == 1); // true
-
-
-
-
+// Above logs:
+    // Removed go to Disneyland.
+    // Completed go to Jamaica.
+    // Added go to Disney World.
 
 
 
