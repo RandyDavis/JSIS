@@ -359,42 +359,145 @@
 
 // *** filter(): Filter a collection
 // Filter by an array of model IDs
-var Todo = Backbone.Model.extend();
-var Todos = Backbone.Collection.extend({
-  model: Todo,
-  filterById: function(ids) {
-    return this.models.filter(
-      function(c) {
-        return _.contains(id, c.id);
-      });
+// var Todo = Backbone.Model.extend();
+// var Todos = Backbone.Collection.extend({
+//   model: Todo,
+//   filterById: function(ids) {
+//     return this.models.filter(
+//       function(c) {
+//         return _.contains(id, c.id);
+//       });
+//   }
+// });
+
+
+
+// // *** indexOf(): Return the item at a particular index within a collection
+// var People = new Backbone.Collection();
+// People.comparator = function(a, b) {
+//   return a.get('name') < b.get('name') ? -1 : 1;
+// };
+
+// var tom = new Backbone.Model({ name: 'Tom' });
+// var rob = new Backbone.Model({ name: 'Rob' });
+// var tim = new Backbone.Model({ name: 'Tim' });
+
+// People.add(tom);
+// People.add(rob);
+// People.add(tim);
+
+// console.log(People.indexOf(rob) === 0);  // true
+// console.log(People.indexOf(tim) === 1);  // true
+// console.log(People.indexOf(tom) === 2);  // true
+
+
+
+
+// // *** any(): Confirm if any of the values in a collection pass an iterator truth test
+// Todos.any(function(model) {
+//   return model.id === 100;
+// });
+
+// // or
+// Todos.some(function(model) {
+//   return model.id === 100;
+// });
+
+
+
+
+// // *** size(): Return the size of a collection
+// Todos.size();
+
+// // equivalent to 
+// Todos.length;
+
+
+
+
+
+// *** isEmpty(): Determine whether a collection is empty
+// var isEmpty = Todos.isEmpty();
+
+
+
+
+// *** groupBy(): Group a collection into groups like items
+var Todos = new Backbone.Collection();
+
+Todos.add([
+  { title: 'go to Belgium', completed: false },
+  { title: 'go to China', completed: false },
+  { title: 'go to Austria', completed: true }
+]);
+
+// create groups of completed and incomplete models
+var byCompleted = Todos.groupBy('completed');
+var completed = new Backbone.Collection(byCompleted[true]);
+console.log(completed.pluck('title'));
+
+// Above logs
+// Array [ "go to Austria" ]
+
+
+
+
+// *** pick(): Extract a set of attributes from a model
+var Todo = Backbone.Model.extend({
+  default: {
+    title: '',
+    completed: false
   }
 });
 
-
-
-// *** indexOf(): Return the item at a particular index within a collection
-var People = new Backbone.Collection();
-People.comparator = function(a, b) {
-  return a.get('name') < b.get('name') ? -1 : 1;
-};
-
-var tom = new Backbone.Model({ name: 'Tom' });
-var rob = new Backbone.Model({ name: 'Rob' });
-var tim = new Backbone.Model({ name: 'Tim' });
-
-People.add(tom);
-People.add(rob);
-People.add(tim);
-
-console.log(People.indexOf(rob) === 0);  // true
-console.log(People.indexOf(tim) === 1);  // true
-console.log(People.indexOf(tom) === 2);  // true
+// var todo =  new Todo({ title: 'go to Austria.' });
+// console.log(todo.pick('title'));
+// // Above logs
+// // { title: "go to Austria." }
 
 
 
 
+// // *** omit(): Extract all attributes from a model except those listed
+// var todo = new Todo({ title: 'go to Austria.' });
+// console.log(todo.omit('title'));
+// // Above logs
+// // {  }
 
 
+
+// // *** keys() and values(): Get lists of attribute names and values
+// var todo = new Todo({ title: 'go to Austria.' });
+// console.log(todo.keys());
+// // Above logs
+// // ["title", "completed"]
+
+// console.log(todo.values());
+// Aboe logs
+// ["go to Austria", false]
+
+
+
+
+// *** pairs(): Get list of attributes as [key, value] pairs
+var todo = new Todo({title: 'go to Austria.' });
+var pairs = todo.pairs();
+
+console.log(pairs[0]);
+// Above logs
+// ["title", "go to Austria"]
+
+console.log(pairs[1]);
+// Above logs
+// ["completed", false]
+
+
+
+// *** invert(): Create object in which the values are keys and the attributes are values
+var todo = new Todo({ title: "go to Austria." });
+console.log(todo.invert());
+// Above logs
+// { go to Austria.: "title", false: "completed" }
 
 
 
