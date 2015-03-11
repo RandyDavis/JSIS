@@ -232,57 +232,81 @@
 
 
 // Use Collection.reset() to replace the entire content of the collection
-var TodosCollection = new Backbone.Collection();
+// var TodosCollection = new Backbone.Collection();
 
-// we can listen for reset events
-TodosCollection.on("reset", function(){
-  console.log("Collection reset");
+// // we can listen for reset events
+// TodosCollection.on("reset", function(){
+//   console.log("Collection reset");
+// });
+
+// TodosCollection.add([
+//   {title: 'go to Jamaica.', completed: false},
+//   {title: 'go to China.', completed: false},
+//   {title: 'go to Disneyland.', completed: true}
+// ]);
+
+// console.log('Collection size: ' + TodosCollection.length);  // Collection size: 3
+
+// TodosCollection.reset([
+//   {title: 'go to Cuba.', completed: false}
+// ]);
+
+// console.log('Collection size: ' + TodosCollection.length);  // Collection size: 1
+
+// // Another useful tip is to use .reset() with no arguments to clear the collection completely
+// TodosCollection.reset([]);
+
+// console.log('Collection size: ' + TodosCollection.length);  // Collection size: 0
+
+
+// // * Also not that when listening to a reset event, the list of previous models is available
+// // * in options.previouModels, for convenience:
+// var Todo = new Backbone.Model();
+// var Todos = new Backbone.Collection([Todo])
+//   .on('reset', function(Todos, options) {
+//     console.log(options.previousModels);
+//     console.log([Todo]);
+//     console.log(options.previousModels[0] === Todo); // true
+//   });
+//   Todos.reset([]);
+
+
+// // * An update() method is available for collections (and is also available as an option to fetch) 
+// // * for smart updating of sets of models. This method attempts to perform smart updating of a collection
+// // * using a specified list of models. When a model in this list isn’t present in the collection, it is added. 
+// // * If it is present, its attributes will be merged. Models that are present in the collection but not in the list are removed.
+
+// var theBeatles = new Collection(['john', 'paul', 'george', 'ringo']);
+
+// theBeatles.update(['john', 'paul', 'george', 'pete']);
+// // Fires a `remove` event for 'ringo', and an `add` event for 'pete'.
+// // Updates any of john, paul, and george's attributes that may have
+// // changed over the years.
+
+
+
+
+
+
+// *** Using Underscore Utility Functions ***
+
+// forEach: Iterate over Collections
+var Todos = new Backbone.Collection();
+
+Todos.add([
+  { title: 'go to Belgium', completed: false },
+  { title: 'go to China', completed: false },
+  { title: 'go to Austria', completed: true }
+]);
+
+// iterate over models in the collection
+Todos.forEach(function(model) {
+  console.log(model.get('title'));
 });
-
-TodosCollection.add([
-  {title: 'go to Jamaica.', completed: false},
-  {title: 'go to China.', completed: false},
-  {title: 'go to Disneyland.', completed: true}
-]);
-
-console.log('Collection size: ' + TodosCollection.length);  // Collection size: 3
-
-TodosCollection.reset([
-  {title: 'go to Cuba.', completed: false}
-]);
-
-console.log('Collection size: ' + TodosCollection.length);  // Collection size: 1
-
-// Another useful tip is to use .reset() with no arguments to clear the collection completely
-TodosCollection.reset([]);
-
-console.log('Collection size: ' + TodosCollection.length);  // Collection size: 0
-
-
-// * Also not that when listening to a reset event, the list of previous models is available
-// * in options.previouModels, for convenience:
-var Todo = new Backbone.Model();
-var Todos = new Backbone.Collection([Todo])
-  .on('reset', function(Todos, options) {
-    console.log(options.previousModels);
-    console.log([Todo]);
-    console.log(options.previousModels[0] === Todo); // true
-  });
-  Todos.reset([]);
-
-
-// * An update() method is available for collections (and is also available as an option to fetch) 
-// * for smart updating of sets of models. This method attempts to perform smart updating of a collection
-// * using a specified list of models. When a model in this list isn’t present in the collection, it is added. 
-// * If it is present, its attributes will be merged. Models that are present in the collection but not in the list are removed.
-
-var theBeatles = new Collection(['john', 'paul', 'george', 'ringo']);
-
-theBeatles.update(['john', 'paul', 'george', 'pete']);
-// Fires a `remove` event for 'ringo', and an `add` event for 'pete'.
-// Updates any of john, paul, and george's attributes that may have
-// changed over the years.
-
+//  Above logs:
+// go to Belgium
+// go to China
+// go to Austria
 
 
 
