@@ -288,27 +288,107 @@
 
 
 
-// *** Using Underscore Utility Functions ***
+// ******** Using Underscore Utility Functions ********
 
-// forEach: Iterate over Collections
-var Todos = new Backbone.Collection();
+// *** forEach: Iterate over Collections ***
+// var Todos = new Backbone.Collection();
 
-Todos.add([
-  { title: 'go to Belgium', completed: false },
-  { title: 'go to China', completed: false },
-  { title: 'go to Austria', completed: true }
-]);
+// Todos.add([
+//   { title: 'go to Belgium', completed: false },
+//   { title: 'go to China', completed: false },
+//   { title: 'go to Austria', completed: true }
+// ]);
 
-// iterate over models in the collection
-Todos.forEach(function(model) {
-  console.log(model.get('title'));
+// // iterate over models in the collection
+// Todos.forEach(function(model) {
+//   console.log(model.get('title'));
+// });
+// //  Above logs:
+// // go to Belgium
+// // go to China
+// // go to Austria
+
+
+// // *** sortBy(): Sort a collection on a specific attribute ***
+// var sortedAlphabet = Todos.sortBy(function(todo) {
+//   return todo.get("title").toLowerCase();
+// });
+
+// console.log("- Now Sorted: ");
+
+// sortedAlphabet.forEach(function(model) {
+//   console.log(model.get("title"));
+// });
+
+// // Above logs:
+// // "- Now Sorted: " collections.js:317:0
+// // "go to Austria" collections.js:320:2
+// // "go to Belgium" collections.js:320:2
+// // "go to China"
+
+
+
+// // *** map(): Create a new collection by mapping each value in a list through a transformation function ***
+// var count = 1;
+// console.log(Todos.map(function(model) {
+//   return count++ + ". " + model.get('title');
+// }));
+
+// // Above logs:
+// // Array [ "1. go to Belgium", "2. go to China", "3. go to Austria" ]
+
+
+
+
+// // *** min()/max(): Retrieve item with the min or max value of an attribute
+// Todos.max(function(model) {
+//   return model.id;
+// }).id;
+
+// Todos.min(function(model) {
+//   return model.id;
+// }).id;
+
+
+
+// // *** pluck(): Extract a specific attribute
+// var captions = Todos.pluck('caption');
+// // returns a list of captions
+
+
+
+// *** filter(): Filter a collection
+// Filter by an array of model IDs
+var Todo = Backbone.Model.extend();
+var Todos = Backbone.Collection.extend({
+  model: Todo,
+  filterById: function(ids) {
+    return this.models.filter(
+      function(c) {
+        return _.contains(id, c.id);
+      });
+  }
 });
-//  Above logs:
-// go to Belgium
-// go to China
-// go to Austria
 
 
+
+// *** indexOf(): Return the item at a particular index within a collection
+var People = new Backbone.Collection();
+People.comparator = function(a, b) {
+  return a.get('name') < b.get('name') ? -1 : 1;
+};
+
+var tom = new Backbone.Model({ name: 'Tom' });
+var rob = new Backbone.Model({ name: 'Rob' });
+var tim = new Backbone.Model({ name: 'Tim' });
+
+People.add(tom);
+People.add(rob);
+People.add(tim);
+
+console.log(People.indexOf(rob) === 0);  // true
+console.log(People.indexOf(tim) === 1);  // true
+console.log(People.indexOf(tom) === 2);  // true
 
 
 
