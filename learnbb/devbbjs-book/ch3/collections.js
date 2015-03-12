@@ -423,32 +423,32 @@
 
 
 // *** groupBy(): Group a collection into groups like items
-var Todos = new Backbone.Collection();
+// var Todos = new Backbone.Collection();
 
-Todos.add([
-  { title: 'go to Belgium', completed: false },
-  { title: 'go to China', completed: false },
-  { title: 'go to Austria', completed: true }
-]);
+// Todos.add([
+//   { title: 'go to Belgium', completed: false },
+//   { title: 'go to China', completed: false },
+//   { title: 'go to Austria', completed: true }
+// ]);
 
-// create groups of completed and incomplete models
-var byCompleted = Todos.groupBy('completed');
-var completed = new Backbone.Collection(byCompleted[true]);
-console.log(completed.pluck('title'));
+// // create groups of completed and incomplete models
+// var byCompleted = Todos.groupBy('completed');
+// var completed = new Backbone.Collection(byCompleted[true]);
+// console.log(completed.pluck('title'));
 
-// Above logs
-// Array [ "go to Austria" ]
-
-
+// // Above logs
+// // Array [ "go to Austria" ]
 
 
-// *** pick(): Extract a set of attributes from a model
-var Todo = Backbone.Model.extend({
-  default: {
-    title: '',
-    completed: false
-  }
-});
+
+
+// // *** pick(): Extract a set of attributes from a model
+// var Todo = Backbone.Model.extend({
+//   default: {
+//     title: '',
+//     completed: false
+//   }
+// });
 
 // var todo =  new Todo({ title: 'go to Austria.' });
 // console.log(todo.pick('title'));
@@ -480,34 +480,62 @@ var Todo = Backbone.Model.extend({
 
 
 // *** pairs(): Get list of attributes as [key, value] pairs
-var todo = new Todo({title: 'go to Austria.' });
-var pairs = todo.pairs();
+// var todo = new Todo({title: 'go to Austria.' });
+// var pairs = todo.pairs();
 
-console.log(pairs[0]);
-// Above logs
-// ["title", "go to Austria"]
+// console.log(pairs[0]);
+// // Above logs
+// // ["title", "go to Austria"]
 
-console.log(pairs[1]);
-// Above logs
-// ["completed", false]
-
-
-
-// *** invert(): Create object in which the values are keys and the attributes are values
-var todo = new Todo({ title: "go to Austria." });
-console.log(todo.invert());
-// Above logs
-// { go to Austria.: "title", false: "completed" }
+// console.log(pairs[1]);
+// // Above logs
+// // ["completed", false]
 
 
+
+// // *** invert(): Create object in which the values are keys and the attributes are values
+// var todo = new Todo({ title: "go to Austria." });
+// console.log(todo.invert());
+// // Above logs
+// // { go to Austria.: "title", false: "completed" }
 
 
 
 
 
+// ********** CHAINABLE API *****************
+// *** chain(): Allows you to to chain calls to methods on collections
+var collection = new Backbone.Collection([
+  { name: 'Tim', age: 5 },
+  { name: 'Ida', age: 26 },
+  { name: 'Rob', age: 55 }
+]);
+
+var filteredNames = collection.chain()
+// start chain, returns wrapper around collection's models
+  .filter(function(item) {
+    return item.get('age') > 10;
+  })
+  // returns wrapped array excluding Tim
+  .map(function(item) {
+    return item.get('name');
+  })
+  // returns wrapped array containing remaining names
+  .value(); // terminates the chain and returns the resulting array
+
+console.log(filteredNames); // logs: ['Ida', 'Rob']
 
 
+// Additional Chaining scenario
+var collection2 = new Backbone.Collection();
 
+collection2
+  .add({ name: 'John', age: 23 })
+  .add({ name: 'Harry', age: 33 })
+  .add({ name: 'Steve', age: 41 });
+
+var names = collection2.pluck('name');
+console.log(names);  // logs: ['John', 'Harry', 'Steve']
 
 
 
