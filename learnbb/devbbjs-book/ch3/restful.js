@@ -45,27 +45,50 @@
 
 
 // *** Deleting Models from the Server ***
-var Todo = Backbone.Model.extend({
-  defaults: {
-    title: '',
-    completed: false
-  }
-});
+// var Todo = Backbone.Model.extend({
+//   defaults: {
+//     title: '',
+//     completed: false
+//   }
+// });
 
-var TodosCollection = Backbone.Collection.extend({
-  model: Todo,
-  url: '/todos'
-});
+// var TodosCollection = Backbone.Collection.extend({
+//   model: Todo,
+//   url: '/todos'
+// });
 
-var todos = new TodosCollection();
-todos.fetch();
+// var todos = new TodosCollection();
+// todos.fetch();
 
-var todo2 = todos.get(2);
-todo2.destroy(); // sends HTTP DELETE to /todos/2 and removes from collection
+// var todo2 = todos.get(2);
+// todo2.destroy(); // sends HTTP DELETE to /todos/2 and removes from collection
 
-// Calling destroy() on a model will return false if the model isNew:
-var Todo = new Backbone.Model();
-console.log(Todo.destroy()); // false
+// // Calling destroy() on a model will return false if the model isNew:
+// var Todo = new Backbone.Model();
+// console.log(Todo.destroy()); // false
+
+
+
+
+// *** Options ***
+// Save partial using PATCH
+// model.clear().set({ id: 2, a: 1, b: 2, c: 3, d: 4 });
+// model.save();
+// model.save({ b: 2, d: 4 }, { patch: true });
+// console.log(this.syncArgs.method);
+// // 'patch'
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
