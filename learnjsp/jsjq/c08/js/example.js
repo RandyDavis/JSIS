@@ -101,7 +101,26 @@ $(function() {
 
   loadTimetable();                                                       // Call the function
 
-  
+  // CLICK AN EVENT TO LOAD A TIMETABLE
+  $('#content').on('click', '#event a', function(e) {                    // User clicks on place
+    e.preventDefault();                                                  // Prevent loading page
+    var loc = this.id.toUpperCase();                                     // Get value of id attr
+
+    var newContent = '';                                                 // To build up timetable
+    for (var i = 0; i < times[loc].length; i++) {                        // loop through sessions
+      newContent += '<li><span class="time">' + times[loc][i].time + '</span>';
+      newContent += '<a href="descriptions.html#';
+      newContent += times[loc][i].title.replace(/ /g, '-') + '">';
+      newContent += times[loc][i].title + '</a></li>'; 
+    }
+
+    $('#sessions').html('<ul>' + newContent + '</ul>');                 // Display time
+
+    $('#event a.current').removeClass('current');                       // Update selected link
+    $(this).addClass('current');                                        
+
+    $('#details').text('');                                             // Clear third column
+  });
 
 
 
