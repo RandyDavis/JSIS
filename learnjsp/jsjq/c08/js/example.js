@@ -122,7 +122,30 @@ $(function() {
     $('#details').text('');                                             // Clear third column
   });
 
+  // CLICK A SESSION TO LOAD THE DESCRIPTION
+  $('#content').on('click', '#sessions li a', function(e) {             // Click on session
+    e.preventDefault();                                                 // Prevent Default Page Loading
+    var fragment = this.href;                                           // Title is in href
 
+    fragment = fragment.replace('#', ' #');                             //Add space after #
+    $('#details').load(fragment);                                       // To load info
+
+    $('#sessions a.current').removeClass('current');                    // Update selected
+    $(this).addClass('current');
+
+  });
+
+  // CLICK ON PRIMARY NAVIGATION
+  $('nav a').on('click', function(e) {                                  // Click on nav
+    e.preventDefault();                                                 // Prevent loading
+    var url = this.href;                                                // Get URL to load
+
+    $('nav a.current').removeClass('current');                          //Update nav
+    $(this).addClass('current');
+
+    $('#container').remove();                                            // Remove old
+    $('#content').load(url + ' #container').hide().fadeIn('slow');       // Add new
+  });
 
 
 
