@@ -10,7 +10,13 @@
 // });
 
 // Another attempt
+// $(function() {
+//   var $listItemText = $('li').text();
+//   $('li').append('<i>' + $listItemText + '</i>');
+// });
+
 $(function() {
-  var $listItemText = $('li').text();
+  $listItemText = $('li').text();
+  console.log($listItemText);
   $('li').append('<i>' + $listItemText + '</i>');
 });

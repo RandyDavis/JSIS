@@ -10,7 +10,15 @@
 // });
 
 // Another attempt
+// $(function() {
+//   var $listHTML = $('ul').html();
+//   $('ul').append($listHTML);
+// });
+
+
+// Another attempt 
 $(function() {
-  var $listHTML = $('ul').html();
+  $listHTML = $('ul').html();
+  console.log($listHTML);
   $('ul').append($listHTML);
 });
