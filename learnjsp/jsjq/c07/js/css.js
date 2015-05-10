@@ -33,16 +33,55 @@
 // });
 
 // Another attempt
+// $(function() {
+//   var backgroundColor = $('ul').css('background-color');
+
+//   $('ul').append('<p>Color was: ' + backgroundColor + '</p>');
+//   $('li').css({
+//     'background-color': '#c5a996',
+//     'border': '1px solid #fff',
+//     'color': '#000',
+//     'text-shadow': 'none',
+//     'font-family': 'Georgia',
+//     'padding-left': '+=75'
+//   });
+// });
+
+
+// Another attempt
 $(function() {
-  var backgroundColor = $('ul').css('background-color');
+  var backgroundColor = $('li').css('backgroundColor');
 
   $('ul').append('<p>Color was: ' + backgroundColor + '</p>');
+
   $('li').css({
     'background-color': '#c5a996',
     'border': '1px solid #fff',
     'color': '#000',
     'text-shadow': 'none',
     'font-family': 'Georgia',
-    'padding-left': '+=75'
+    'padding-left': '+=75px'
   });
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
