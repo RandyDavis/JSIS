@@ -32,4 +32,8 @@ $(function() {
     var clicked = date.toDateString();
     $(this).append('<span class="date">' + clicked + ' ' + e.type + '</span>');
   });
+
+  $('li').on('mouseout', function() {
+    $('li span').remove();
+  });
 });
