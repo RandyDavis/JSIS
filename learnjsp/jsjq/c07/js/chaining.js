@@ -3,6 +3,12 @@
 // $('li.priority').addClass('highlight');
 
 // Attempt 1
-$('li[id!="one"]').hide().delay(500).fadeIn(1500);
+//$('li[id!="one"]').hide().delay(500).fadeIn(1500);
+//$('li:first-child').addClass('next');
+//$('li.priority').addClass('highlight');
+
+
+// Another attempt
+$('li[id!="one"]').hide().delay(500).fadeIn(1400);
 $('li:first-child').addClass('next');
 $('li.priority').addClass('highlight');
