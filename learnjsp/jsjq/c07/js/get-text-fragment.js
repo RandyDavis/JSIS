@@ -16,8 +16,15 @@
 // });
 
 // Another attempt
+//$(function() {
+//  $listText = $('ul').text();
+//  console.log($listText);
+//  $('ul').append('<p>' + $listText + '</p>');
+//});
+
+
+// Another try
 $(function() {
-  $listText = $('ul').text();
-  console.log($listText);
+  var $listText = $("ul").text();
   $('ul').append('<p>' + $listText + '</p>');
 });

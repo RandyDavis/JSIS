@@ -17,8 +17,16 @@
 
 
 // Another attempt
+//$(function() {
+//  $listItemHTML = $('li').html();
+//  console.log($listItemHTML);
+//  $('li').append('<i>' + $listItemHTML + '</i>');
+//});
+
+
+
+// Another try
 $(function() {
-  $listItemHTML = $('li').html();
-  console.log($listItemHTML);
+  var $listItemHTML = $('li').html();
   $('li').append('<i>' + $listItemHTML + '</i>');
 });

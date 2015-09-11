@@ -16,9 +16,17 @@
 // });
 
 
-// Another attempt 
+//// Another attempt
+//$(function() {
+//  $listHTML = $('ul').html();
+//  console.log($listHTML);
+//  $('ul').append($listHTML);
+//});
+
+
+
+// Another try
 $(function() {
-  $listHTML = $('ul').html();
-  console.log($listHTML);
-  $('ul').append($listHTML);
+  var $listHTML = $("ul").html();
+  $("ul").append($listHTML);
 });
