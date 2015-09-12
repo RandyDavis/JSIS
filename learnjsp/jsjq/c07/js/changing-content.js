@@ -25,10 +25,21 @@
 // });
 
 // Another attempt
+//$(function() {
+//  $('li:contains("pine")').text('Piney Nuts');
+//  $('li.hot').html(function() {
+//    return '<em>' + $(this).text() + '</em>';
+//  });
+//  $('li#one').remove();
+//});
+
+
+
+// another try
 $(function() {
-  $('li:contains("pine")').text('Piney Nuts');
+  $('li:contains("pine")').text('Walnuts');
   $('li.hot').html(function() {
     return '<em>' + $(this).text() + '</em>';
   });
   $('li#one').remove();
-});
+})
