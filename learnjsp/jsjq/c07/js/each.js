@@ -22,9 +22,19 @@
 // });
 
 // Another attempt
+//$(function() {
+//  $('li').each(function() {
+//    var ids = this.id;
+//    $(this).append(' <span class="order">' + ids + '</span>');
+//  });
+//});
+
+
+
+// Another try
 $(function() {
   $('li').each(function() {
     var ids = this.id;
     $(this).append(' <span class="order">' + ids + '</span>');
-  });
-});
+  })
+})
